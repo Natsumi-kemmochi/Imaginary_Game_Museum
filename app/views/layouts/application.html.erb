@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ImaginaryGameMuseum</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Imaginary_Game_Museum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
@@ -10,8 +10,20 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
   <body>
-    <%= yield %>
+    <header>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="h3 text-light">Imaginary Game Museum</a>
+        </nav>
+      </div>
+    </header>
+    
+    
+    <main>
+      <%= yield %>
+    </main>
+    
   </body>
 </html>
