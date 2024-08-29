@@ -1,4 +1,4 @@
-# イマジナリーゲーム博物館 Imaginary Game Museum
+# イマジナリーゲーム博物館 Imaginary Game Museum　8/30
 
 ## サイト概要
 未完成のゲームに対して、想像上の感想を投稿できるSNS
