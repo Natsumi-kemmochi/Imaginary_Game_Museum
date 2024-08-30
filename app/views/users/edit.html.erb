@@ -1,2 +1,25 @@
-<p>ユーザー情報変更</p>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+
+    <h6>ユーザー情報変更</h><br><br>
+    
+      <%= form_with model: @user do |f| %>
+        <label for="inputName">ユーザー名</label><br>
+          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"User", style: "width:60%" %><br><br>
+        <%#
+        <label for="inputImage">プロフィール画像</label><br>
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %> <br><br> 
+        
+        <label for="inputIntroduction">自己紹介文</label><br>
+          <%= f.text_area :introduction, autofocus: true, id:"inputIntroducton", style: "width:60%" %><br>
+        
+        <label for="inputIntroduction">外部サイトへのリンク</label><br>
+          <%= f.text_area :link, autofocus: true, id:"inputLink", style: "width:60%" %><br>
+        
+        <%= f.submit "更新する", class: 'btn btn-secondary' %>
+      <% end %>
+
+  </div>
+</div>
+
+
