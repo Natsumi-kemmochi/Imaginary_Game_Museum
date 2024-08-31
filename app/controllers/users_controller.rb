@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :introduction, :link)
+    params.require(:user).permit(:name, :introduction, :link, :profile_image)
   end
   
   def is_matching_login_user

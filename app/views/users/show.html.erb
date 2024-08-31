@@ -1,6 +1,9 @@
 
-<p>画像</p>
-<p><%= @user.id %></p>
+  <% if @user.profile_image.attached? %>
+    <%= image_tag profile_image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
 
 <p>名前</p>
 <p><%= @user.name %></p>
