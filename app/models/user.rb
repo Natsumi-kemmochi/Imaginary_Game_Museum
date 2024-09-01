@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :games, dependent: :destroy
-         
   has_one_attached :image
+  
+  validates :name, length: { in: 1..20 }
   
   def get_profile_image
   end
