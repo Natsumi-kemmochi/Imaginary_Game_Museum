@@ -1,2 +1,13 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+<p>新着投稿一覧</p>
+
+<% @games.each do |game| %>
+
+　<p>タイトル</p>
+  <span><%= game.title %></span>
+　<p>見出し</p>
+　<span><%= game.caption %></span>
+　<p>自由記述欄</p>
+　<span><%= game.main_text %></span>
+　
+　
+<% end %>
