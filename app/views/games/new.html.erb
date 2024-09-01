@@ -1,6 +1,10 @@
 <h1>新規投稿</h1>
 <!-- form_with部分 -->
 <%= form_with model: Game.new do |f| %>
+
+  <h6>メインビジュアル</h6>
+  <%= f.file_field :image, accept: "image/*" %>
+
   <h6>タイトル(必須)</h6>
   <%= f.text_field :title %>
 	
@@ -9,8 +13,6 @@
   
   <h6>自由記述欄</h6>
   <%= f.text_area :main_text %>
-  
-  
-	
+
   <%= f.submit '投稿' %>
 <% end %>

@@ -1,9 +1,11 @@
 <p>新着投稿一覧</p>
 
 <% @games.each do |game| %>
-
+  
+  <p>画像</p>
+  <%= image_tag game.image, size: "200x200" %>
 　<p>タイトル</p>
-  <span><%= game.title %></span>
+  <strong><span><%= game.title %></span></strong>
 　<p>見出し</p>
 　<span><%= game.caption %></span>
 　<p>自由記述欄</p>
