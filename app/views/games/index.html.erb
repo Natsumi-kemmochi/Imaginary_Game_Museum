@@ -3,7 +3,10 @@
 <% @games.each do |game| %>
   
   <p>画像</p>
-  <%= image_tag game.image, size: "200x200" %>
+    <% if game.image.attached? %>
+      <%= image_tag game.image, size: "200x200" %>
+    <% else %>
+    <% end %>
 　<p>タイトル</p>
   <strong><span><%= game.title %></span></strong>
 　<p>見出し</p>
