@@ -10,8 +10,9 @@
 　<span><%= game.caption %></span>
 　<p>自由記述欄</p>
 　<span><%= game.main_text %></span>
-　
 　<p>もっと見る</p>
 　
 　
 <% end %>
+
+<%= paginate @games %>

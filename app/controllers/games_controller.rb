@@ -10,6 +10,7 @@ class GamesController < ApplicationController
     if @game.save
       redirect_to  game_path(@game.id)
     else
+      #9/2投稿失敗時にも入力データが消えないようにしたい
       render :new
     end
   end
@@ -19,7 +20,7 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = Game.all
+    @games = Game.page(params[:page])
   end
 
   def edit

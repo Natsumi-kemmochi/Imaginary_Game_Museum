@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])  
-    @games = @user.games
+    @games = @user.games.page(params[:page])
   end
 
   def edit
