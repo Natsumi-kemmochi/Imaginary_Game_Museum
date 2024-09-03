@@ -1,14 +1,11 @@
 <p>新着投稿一覧</p>
 
 <% @games.each do |game| %>
-  
-  <p>画像</p>
-    <% if game.image.attached? %>
-      <%= image_tag game.image, size: "200x200" %>
-    <% else %>
-    <% end %>
+  <%= link_to game_path(game.id) do %>
+    <%= image_tag game.image, size: "200x200" %>
+  <% end %>
 　<p>タイトル</p>
-  <strong><span><%= link_to @game.title, "/games/#{@game.id}" %></span></strong>
+  <strong><span><%= game.title %></span></strong>
 　<p>見出し</p>
 　<span><%= game.caption %></span>
 　<p>自由記述欄</p>

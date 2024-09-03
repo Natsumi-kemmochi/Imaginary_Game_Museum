@@ -1,6 +1,14 @@
 <h1>新規投稿</h1>
 
 <!-- エラーメッセージ -->
+<% if @game.errors.any? %>
+  <%= @game.errors.count %>件のエラーが発生しました
+  <ul>
+  <% @game.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+   </ul>
+<% end %>
 
 <!-- form_with部分 -->
 <%= form_with model: Game.new do |f| %>

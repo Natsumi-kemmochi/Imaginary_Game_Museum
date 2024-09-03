@@ -5,10 +5,10 @@ class GamesController < ApplicationController
   end
   
   def create
-    game = Game.new(game_params)
-    game.user_id = current_user.id
-    if game.save
-      redirect_to root_path
+    @game = Game.new(game_params)
+    @game.user_id = current_user.id
+    if @game.save
+      redirect_to  game_path(@game.id)
     else
       render :new
     end
@@ -19,7 +19,6 @@ class GamesController < ApplicationController
   end
 
   def index
-    @game = Game.find(params[:id])
     @games = Game.all
   end
 

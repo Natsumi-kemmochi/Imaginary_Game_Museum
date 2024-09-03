@@ -26,6 +26,9 @@
 
 <% @games.each do |game| %>
 <div>
-  <strong><span><%= link_to game.title, "/games/#{@game.id}" %></span></strong>
+  <%= link_to game_path(game.id) do %>
+    <%= image_tag game.image, size: "200x200" %>
+  <% end %>
+  <strong><span><%= game.title %></span></strong>
 </div>
 <% end %>
