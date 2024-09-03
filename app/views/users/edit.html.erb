@@ -2,6 +2,16 @@
   <div class="row">
 
     <h6>ユーザー情報変更</h><br><br>
+    
+    <% if @user.errors.any? %>
+      <%= @user.errors.count %>件のエラーが発生しました
+      <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+      </ul>
+    <% end %>
+    
       <%= form_with model: @user do |f| %>
       
         <label for="inputImage">Image</label><br>

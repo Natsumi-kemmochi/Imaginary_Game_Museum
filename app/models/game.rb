@@ -8,5 +8,6 @@ class Game < ApplicationRecord
   validates :caption, length: { maximum: 50 }
   validates :caption, presence: true
   validates :main_text, length: { maximum: 800 }
+  validates :image, presence: true
 
 end
