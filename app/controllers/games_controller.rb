@@ -19,6 +19,7 @@ class GamesController < ApplicationController
   end
 
   def index
+    @game = Game.find(params[:id])
     @games = Game.all
   end
 
