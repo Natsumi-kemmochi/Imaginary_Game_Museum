@@ -27,12 +27,21 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def update
+    #編集時、すでに投稿したメインビジュアルを表示したい
+    if game = Game.find(params[:id])
+      flash[:notice] = "You have updated user successfully."
+      game.update(game_params)
+      redirect_to  game_path(game.id)
+    else
+      render :edit
+    end
+  end
 
   def destroy
   end
 
-  def update
-  end
+  
   
   
   # ストロングパラメータ

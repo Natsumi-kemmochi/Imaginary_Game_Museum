@@ -1,1 +1,18 @@
+<%= form_with model: @game do |f| %>
 
+    
+   <h6>メインビジュアル</h6>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  <h6>タイトル(必須)</h6>
+  <%= f.text_field :title %>
+	
+  <h6>見出し（必須）</h6>
+  <%= f.text_area :caption %>
+  
+  <h6>自由記述欄</h6>
+  <%= f.text_area :main_text %>
+  
+  <%= f.submit '保存' %>
+  
+<% end %>
