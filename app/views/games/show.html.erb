@@ -11,4 +11,8 @@
    <%= link_to edit_game_path(@game), class: "btn btn-light btn-outline-dark" do %>
      ゲーム情報変更</i>
    <% end %>
- </div>
+</div>
+
+<div class="destroy_game">
+  <%= link_to "削除", game_path(@game.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+</div>
