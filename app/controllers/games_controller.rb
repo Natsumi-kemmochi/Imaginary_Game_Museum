@@ -29,10 +29,10 @@ class GamesController < ApplicationController
 
   def update
     #編集時、すでに投稿したメインビジュアルを表示したい
-    if game = Game.find(params[:id])
-      flash[:notice] = "You have updated user successfully."
-      game.update(game_params)
-      redirect_to  game_path(game.id)
+    @game = Game.find(params[:id])
+    if  @game.update(game_params)
+        flash[:notice] = "You have updated user successfully."
+        redirect_to  game_path(game.id)
     else
       render :edit
     end

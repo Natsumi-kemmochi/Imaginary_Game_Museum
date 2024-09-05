@@ -1,3 +1,12 @@
+    <% if @game.errors.any? %>
+      <%= @game.errors.count %>件のエラーが発生しました
+      <ul>
+    <% @game.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+      </ul>
+    <% end %>
+
 <%= form_with model: @game do |f| %>
 
     
