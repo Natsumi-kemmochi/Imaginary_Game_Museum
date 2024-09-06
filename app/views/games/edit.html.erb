@@ -9,7 +9,7 @@
 
 <%= form_with model: @game do |f| %>
 
-    
+  <%= image_tag @game.image, size: "200x200" %>
    <h6>メインビジュアル</h6>
   <%= f.file_field :image, accept: "image/*" %>
 

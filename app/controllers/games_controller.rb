@@ -31,7 +31,6 @@ class GamesController < ApplicationController
   end
 
   def update
-    #編集時、すでに投稿したメインビジュアルを表示したい
     @game = Game.find(params[:id])
     if  @game.update(game_params)
         flash[:notice] = "You have updated user successfully."
