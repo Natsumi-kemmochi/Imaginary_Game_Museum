@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   
   before_action :is_matching_login_user, only: [:edit, :update]
   
-  def index
-    
-  end
-
   def show
     @user = User.find(params[:id])  
     @games = @user.games.page(params[:page])

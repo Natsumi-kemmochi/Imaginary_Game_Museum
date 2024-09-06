@@ -1,6 +1,7 @@
 class Game < ApplicationRecord
 
   has_one_attached :image
+  has_many :details, dependent: :destroy
   belongs_to :user
 
   validates :title, length: { maximum: 50 }
