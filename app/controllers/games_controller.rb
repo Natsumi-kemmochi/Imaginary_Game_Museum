@@ -1,5 +1,8 @@
 class GamesController < ApplicationController
  
+
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+ 
   def new
     @game = Game.new
   end
@@ -41,11 +44,9 @@ class GamesController < ApplicationController
   def destroy
     game = Game.find(params[:id])
     game.destroy
-    redirect_to games_path
+    redirect_to user_path(current_user.id)
   end
 
-  
-  
   
   # ストロングパラメータ
    private
@@ -53,5 +54,12 @@ class GamesController < ApplicationController
    def game_params
      params.require(:game).permit(:title, :caption, :main_text, :image)
    end
+   
+  def is_matching_login_user
+    game =  Game.find(params[:id])
+    unless game.user_id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
+  end
   
 end

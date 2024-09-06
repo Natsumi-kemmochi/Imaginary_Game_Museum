@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    is_matching_login_user
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
