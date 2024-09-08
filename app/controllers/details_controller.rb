@@ -25,6 +25,9 @@ class DetailsController < ApplicationController
   def edit
   end
   
+  def destroy
+  end
+  
   
   
     # ストロングパラメータ

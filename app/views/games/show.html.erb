@@ -39,6 +39,8 @@
 
 
 <div class="destroy_game">
-  <%= link_to "この記事を削除", game_path(@game.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <%= link_to game_path(@game.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
+    この記事を削除
+  <% end %>
 </div>
 
