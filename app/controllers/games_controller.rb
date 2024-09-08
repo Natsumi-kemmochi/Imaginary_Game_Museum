@@ -1,6 +1,5 @@
 class GamesController < ApplicationController
  
-
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
  
   def new
@@ -20,6 +19,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @details = @game.details 
   end
 
   def index

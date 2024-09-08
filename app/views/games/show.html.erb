@@ -1,5 +1,7 @@
-<h2>タイトル</h2>
+<h5>タイトル</h5>
 <%= image_tag @game.image, size: "200x200" %>
+
+<p>投稿者画像・名前</p>
 
 <p><%= @game.title %></p>
 
@@ -13,6 +15,30 @@
    <% end %>
 </div>
 
-<div class="destroy_game">
-  <%= link_to "削除", game_path(@game.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<div class="nav-item">
+   <%= link_to new_game_detail_path(@game), class: 'btn btn-light btn-outline-dark' do %>
+     詳細の投稿</li>
+   <% end %>
 </div>
+<br>
+
+<% if @details.any? %>
+  <p>詳細情報一覧</p>
+
+  <% @details.each do |detail| %>
+  <div>
+   
+      <%= image_tag detail.image, size: "200x200" %>
+    
+  </div>
+  <% end %>
+  <% else %>
+<% end %>
+
+
+
+
+<div class="destroy_game">
+  <%= link_to "この記事を削除", game_path(@game.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+</div>
+
