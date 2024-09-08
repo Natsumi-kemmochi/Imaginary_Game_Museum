@@ -1,7 +1,7 @@
 <h5>タイトル</h5>
 <%= image_tag @game.image, size: "200x200" %>
 
-<p>投稿者画像・名前</p>
+<p>投稿者：<%= @game.user.name %></p>
 
 <p><%= @game.title %></p>
 
@@ -9,17 +9,21 @@
 
 <p><%= @game.main_text %></p>
 
-<div class="edit_game">
-   <%= link_to edit_game_path(@game), class: "btn btn-light btn-outline-dark" do %>
-     ゲーム情報変更</i>
-   <% end %>
-</div>
+<% if @game.user == current_user %>
+  <div class="edit_game">
+     <%= link_to edit_game_path(@game), class: "btn btn-light btn-outline-dark" do %>
+       ゲーム情報変更</i>
+     <% end %>
+  </div>
 
-<div class="nav-item">
-   <%= link_to new_game_detail_path(@game), class: 'btn btn-light btn-outline-dark' do %>
-     詳細の投稿</li>
-   <% end %>
-</div>
+  <div class="nav-item">
+     <%= link_to new_game_detail_path(@game), class: 'btn btn-light btn-outline-dark' do %>
+       詳細の投稿</li>
+     <% end %>
+  </div>
+<% end %>
+  
+  
 <br>
 
 <% if @details.any? %>
@@ -37,10 +41,11 @@
 
 
 
-
-<div class="destroy_game">
-  <%= link_to game_path(@game.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
-    この記事を削除
-  <% end %>
-</div>
+<% if @game.user == current_user %>
+  <div class="destroy_game">
+    <%= link_to game_path(@game.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
+      この記事を削除
+    <% end %>
+  </div>
+<% end %>
 
