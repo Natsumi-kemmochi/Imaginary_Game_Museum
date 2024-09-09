@@ -1,6 +1,6 @@
 class DetailsController < ApplicationController
   
-  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+  before_action :is_matching_login_user, only: [:new, :create, :edit, :update, :destroy]
   
   def new
     @detail = Detail.new
@@ -20,6 +20,7 @@ class DetailsController < ApplicationController
   end
 
   def show
+    @detail = Detail.find(params[:id])
   end
 
   def edit
@@ -37,12 +38,12 @@ class DetailsController < ApplicationController
      params.require(:detail).permit(:sub_text, :image)
    end
    
-  def is_matching_login_user
-    detail =  Detail.find(params[:id])
-    unless detail.user_id == current_user.id
+   def is_matching_login_user
+    game =  Game.find(params[:game_id])
+    unless game.user_id == current_user.id
       redirect_to user_path(current_user.id)
     end
-  end
+   end
   
   
 end

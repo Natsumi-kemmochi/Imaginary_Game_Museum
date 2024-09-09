@@ -15,7 +15,7 @@
        ゲーム情報変更</i>
      <% end %>
   </div>
-
+  <br>
   <div class="nav-item">
      <%= link_to new_game_detail_path(@game), class: 'btn btn-light btn-outline-dark' do %>
        詳細の投稿</li>
@@ -40,10 +40,10 @@
 <% end %>
 
 
-
+<br>
 <% if @game.user == current_user %>
   <div class="destroy_game">
-    <%= link_to game_path(@game.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
+    <%= link_to game_path(@game.id), method: :delete, data: { confirm: "詳細記事やコメントを含めすべて削除されますが、本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
       この記事を削除
     <% end %>
   </div>
