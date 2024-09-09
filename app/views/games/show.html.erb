@@ -31,8 +31,10 @@
 
   <% @details.each do |detail| %>
   <div>
-   
+    
+    <%= link_to game_detail_path(detail.game_id, detail.id) do %>
       <%= image_tag detail.image, size: "200x200" %>
+    <% end %>
     
   </div>
   <% end %>
