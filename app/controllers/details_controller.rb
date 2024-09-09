@@ -27,6 +27,16 @@ class DetailsController < ApplicationController
      @detail = Detail.find(params[:id])
   end
   
+  def update
+    @detail = Detail.find(params[:id])
+    if  @detail.update(game_params)
+        flash[:notice] = "You have updated detail successfully."
+        redirect_to  game_detail_path(@detail.game_id, @detail.id)
+    else
+      render :edit
+    end
+  end
+  
   def destroy
      @detail = Detail.find(params[:id])
   end

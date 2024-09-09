@@ -1,2 +1,13 @@
-<h1>Details#edit</h1>
-<p>Find me in app/views/details/edit.html.erb</p>
+<%= form_with model: @detail do |f| %>
+
+  <%= image_tag @detail.image, size: "200x200" %>
+   <h6>ビジュアル</h6>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  <h6>自由記述欄</h6>
+  <%= f.text_area :sub_text %>
+  
+  <%= f.submit '保存' %>
+  
+<% end %>
+
