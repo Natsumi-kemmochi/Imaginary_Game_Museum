@@ -24,9 +24,11 @@ class DetailsController < ApplicationController
   end
 
   def edit
+     @detail = Detail.find(params[:id])
   end
   
   def destroy
+     @detail = Detail.find(params[:id])
   end
   
   
