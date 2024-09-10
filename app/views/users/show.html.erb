@@ -1,3 +1,6 @@
+<div class="container">
+ 
+
   <% if @user.image.attached? %>
     <%= image_tag @user.image, size: "100x100" %>
   <% else %>
@@ -35,3 +38,6 @@
 <% end %>
 
 <%= paginate @games %>
+
+
+</div>

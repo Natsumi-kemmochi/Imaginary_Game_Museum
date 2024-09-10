@@ -22,7 +22,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def unsubscribe
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      flash[:notice] = '退会が完了しました。'
+      redirect_to new_user_registration_path
+    else
+      render :edit
+    end
   end
   
   

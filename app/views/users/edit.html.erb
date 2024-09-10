@@ -32,10 +32,17 @@
         <%= f.submit "更新する", class: 'btn btn-secondary' %>
       <% end %>
 
+      <br><br>
+      <div class="destroy_user">
+        <%= link_to user_registration_path(@user.id), method: :delete, data: { confirm: "すべての投稿が削除されますが、本当に退会しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
+        退会する
+        <% end %>
+     </div>
+     
   </div>
 </div>
 
-<br><br>
-<h6>退会する</h><br><br>
+
+
 
 
