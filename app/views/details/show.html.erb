@@ -2,16 +2,17 @@
 
 <%= @detail.sub_text %>
 
+
+<%#if @game.user_id == current_user.id %>
   <div>
     <%= link_to edit_game_detail_path(@detail.game_id, @detail.id), class: 'btn btn-light btn-outline-dark' do %>
       詳細の編集
     <% end %>
   </div>
-
-
   <div>
-    <%= link_to game_detail_path(@detail.game_id, @detail.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
+    <%= link_to game_detail_path(@detail.game_id, @detail.id), method: :delete, data: { confirm: "この操作は取り消せません。本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
       この記事を削除
     <% end %>
   </div>
+<%# end %>
   
