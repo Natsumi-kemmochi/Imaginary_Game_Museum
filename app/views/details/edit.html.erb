@@ -1,4 +1,4 @@
-<%= form_with model: @detail do |f| %>
+<%= form_with model: [@game, @detail] do |f| %>
 
   <%= image_tag @detail.image, size: "200x200" %>
    <h6>ビジュアル</h6>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   #ネスト
   resources :games do
-    resources :details, only: [:new, :create, :show, :edit,:update, :destroy]
+    resources :details, only: [:new, :create, :show, :edit, :update, :destroy]
   end
   
 end

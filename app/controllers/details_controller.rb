@@ -9,6 +9,7 @@ class DetailsController < ApplicationController
   
   def create
     @game = Game.find(params[:game_id])
+    @game.user_id = current_user.id
     @detail = Detail.new(detail_params)
     @detail.game_id = @game.id
     if @detail.save
@@ -24,12 +25,13 @@ class DetailsController < ApplicationController
   end
 
   def edit
-     @detail = Detail.find(params[:id])
+    @game = Game.find(params[:game_id])
+    @detail = Detail.find(params[:id])
   end
   
   def update
     @detail = Detail.find(params[:id])
-    if  @detail.update(game_params)
+    if  @detail.update(detail_params)
         flash[:notice] = "You have updated detail successfully."
         redirect_to  game_detail_path(@detail.game_id, @detail.id)
     else
@@ -38,7 +40,10 @@ class DetailsController < ApplicationController
   end
   
   def destroy
+     @game = Game.find(params[:game_id])
      @detail = Detail.find(params[:id])
+     @detail.destroy
+     redirect_to game_path(@game.id)
   end
   
   
