@@ -1,9 +1,9 @@
 <div class="container">
 
 <%= image_tag @detail.image, size: "200x200" %>
-
+<br><br>
 <%= @detail.sub_text %>
-
+<br><br>
 
 <%#if @game.user_id == current_user.id %>
   <div>
@@ -11,6 +11,7 @@
       詳細の編集
     <% end %>
   </div>
+  <br><br>
   <div>
     <%= link_to game_detail_path(@detail.game_id, @detail.id), method: :delete, data: { confirm: "この操作は取り消せません。本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
       この記事を削除
