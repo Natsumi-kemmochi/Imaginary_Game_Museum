@@ -18,9 +18,11 @@
         <tr>
           <td>
             <%# メイン画像 %>
-            <%= link_to game_path(game.id) do %>
-              <%= image_tag game.image, size: "200x200" %>
-            <% end %>
+            <div class="thumbnail" style="display: flex; flex-direction: column;">
+              <%= link_to game_path(game.id) do %>
+                <%= image_tag game.image, size: "200x200" %>
+              <% end %>
+            </div>
           </td>
           <td>
             <%# タイトル %>
@@ -34,13 +36,12 @@
           　<span><%= game.main_text %></span>
           　</td>
          </tr>
-       <% end %>
-      </tbody>
-    </table>
+         <% end %>
+       </tbody>
+     </table>
 
 <%= paginate @games %>
 
 
   </div>
- </div>
 </div>

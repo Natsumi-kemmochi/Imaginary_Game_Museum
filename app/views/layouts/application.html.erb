@@ -36,7 +36,10 @@
                    <%= link_to "ジャンル", root_path, class: 'nav-link text-light' %>
                  </li>
                  <li class="nav-item">
-                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-light" %>
+                   <%= link_to "検索ボックス", root_path, class: 'nav-link text-light' %>
+                 </li>
+                 <li class="nav-item">
+                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class:"nav-link text-light" %>
                  </li>
                <% else %>
                
