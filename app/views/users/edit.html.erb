@@ -12,6 +12,8 @@
       </ul>
     <% end %>
     
+    <%= image_tag @user.image, size: "200x200" %>
+    
       <%= form_with model: @user do |f| %>
       
         <label for="inputImage">Image</label><br>
