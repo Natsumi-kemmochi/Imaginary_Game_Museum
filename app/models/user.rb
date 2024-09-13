@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :games, dependent: :destroy
-  has_many :details, dependent: :destroy
   has_one_attached :image
   
   validates :name, length: { in: 1..20 }

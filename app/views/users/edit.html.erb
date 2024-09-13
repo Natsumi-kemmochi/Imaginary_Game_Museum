@@ -12,7 +12,11 @@
       </ul>
     <% end %>
     
-    <%= image_tag @user.image, size: "200x200" %>
+     <% if @user.image.attached? %>
+      <%= image_tag @user.image, size: "200x200" %>
+      <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+    <% end %>
     
       <%= form_with model: @user do |f| %>
       
@@ -36,7 +40,7 @@
 
       <br><br>
       <div class="destroy_user">
-        <%= link_to user_registration_path(@user.id), method: :delete, data: { confirm: "すべての投稿が削除されますが、本当に退会しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
+        <%= link_to user_path(@user.id), method: :delete, data: { confirm: "すべての投稿が削除されますが、本当に退会しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
         退会する
         <% end %>
      </div>
