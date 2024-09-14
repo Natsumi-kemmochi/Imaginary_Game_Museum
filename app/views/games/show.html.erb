@@ -13,6 +13,10 @@
   <p><%= @game.caption %></p>
 
   <p><%= @game.main_text %></p>
+  
+  <%= link_to "戻る", games_path %>
+  <br><br>
+  
 
   <% if @game.user == current_user %>
     <div class="edit_game">
