@@ -1,54 +1,55 @@
 <div class="container">
-  <div class="row">
-
-    <h6>ユーザー情報変更</h><br><br>
-    
-    <% if @user.errors.any? %>
-      <%= @user.errors.count %>件のエラーが発生しました
-      <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-      </ul>
-    <% end %>
-    
-     <% if @user.image.attached? %>
-      <%= image_tag @user.image, size: "200x200" %>
-      <% else %>
-    <%= image_tag 'no_image', size: "100x100" %>
-    <% end %>
-    
-      <%= form_with model: @user do |f| %>
-      
-        <label for="inputImage">Image</label><br>
+  <div class="row no-gutters">
+    <div class="col-md-7 col-sm-12 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">ユーザー情報の編集</h5>
+       <div class="form-body p-4">
+       　<!-- エラーメッセージ -->
+         <% if @user.errors.any? %>
+         <ul class="alert alert-danger" role="alert">
+           <h6 class="alert-heading">
+             <%= @user.errors.count %>件のエラーが発生しました
+           </h6>
+           <% @user.errors.full_messages.each do |message| %>
+           <li><%= message %></li>
+           <% end %>
+         </ul>
+        <% end %>
+        
+        <div>
+          <% if @user.image.attached? %>
+          <%= image_tag @user.image, size: "100x100" %>
+          <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with model: @user, local: true do |f| %>
+          <h6>ユーザー画像</h6>
+          <br>
           <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %> <br><br>
-      
-        <label for="inputName">ユーザー名</label><br>
-          <%= f.text_field :name, autofocus: f, id:"inputName", placeholder:"User", style: "width:60%" %><br><br>
-        <%#
-        <label for="inputImage">プロフィール画像</label><br>
-          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %> <br><br> 
-        
-        <label for="inputIntroduction">自己紹介文</label><br>
-          <%= f.text_area :introduction, autofocus: true, id:"inputIntroducton", style: "width:60%" %><br>
-        
-        <label for="inputIntroduction">外部サイトへのリンク</label><br>
-          <%= f.text_area :link, autofocus: true, id:"inputLink", style: "width:60%" %><br>
-        
+        </div>
+        <div>
+          <h6>ユーザー名（必須）</h6><br>
+          <%= f.text_field :name, autofocus: f, placeholder:"User", class: "form-control" %><br><br>
+        </div>
+        <div>
+          <h6>自己紹介文（200字まで）</h6>
+          <%= f.text_area :introduction, autofocus: true, class: "form-control", rows: 3 %><br>
+        </div>
+        <div>
+          <h6>外部サイトへのリンク</h6>
+          <%= f.text_area :link, autofocus: true, class: "form-control" %><br>
+        </div>
         <%= f.submit "更新する", class: 'btn btn-secondary' %>
       <% end %>
-
-      <br><br>
+　　　　
+      <br><br><br><br>
       <div class="destroy_user">
         <%= link_to user_path(@user.id), method: :delete, data: { confirm: "すべての投稿が削除されますが、本当に退会しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
         退会する
         <% end %>
+      </div>
      </div>
-     
+    </div>
   </div>
 </div>
-
-
-
-
-
