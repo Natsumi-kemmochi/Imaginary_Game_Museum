@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row no-gutters">
+  <div class="row">
     <div class="col-md-7 col-sm-12 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">ゲーム情報の編集</h5>
        <div class="form-body p-4">
@@ -17,7 +17,7 @@
 
         <%= form_with model: @game, local: true do |f| %>
           <div>
-          <%= image_tag @game.image %>
+            <%= image_tag @game.image %>
           </div>
           <br>
           <div>
