@@ -1,17 +1,25 @@
 <div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-7 col-sm-12 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">詳細記事の投稿</h5>
+        <div class="form-body p-4">
+          <!-- エラーメッセージ -->
+           
+        <%= form_with model: [@game, @detail] do |f| %>
 
-<%= form_with model: [@game, @detail] do |f| %>
+        <%= image_tag @detail.image, size: "200x200" %>
+       <h6>ビジュアル</h6>
+       <%= f.file_field :image, accept: "image/*" %>
 
-  <%= image_tag @detail.image, size: "200x200" %>
-   <h6>ビジュアル</h6>
-  <%= f.file_field :image, accept: "image/*" %>
-
-  <h6>自由記述欄</h6>
-  <%= f.text_area :sub_text %>
+       <h6>自由記述欄</h6>
+       <%= f.text_area :sub_text %>
   
-  <%= f.submit '保存' %>
+       <%= f.submit '保存' %>
   
-<% end %>
-
+       <% end %>
+       
+      </div>
+    </div>
+  </div>
 </div>
 

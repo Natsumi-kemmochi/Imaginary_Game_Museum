@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <div class="col-md-7 col-sm-12 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">新規投稿</h5>
        <div class="form-body p-4">
          <!-- エラーメッセージ -->
@@ -8,14 +8,14 @@
           <ul class="alert alert-danger" role="alert">
             <h6 class="alert-heading">
               <%= @game.errors.count %>件のエラーが発生しました
-            </hr>
+            </h6>
             <% @game.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
           </ul>
          <% end %>
 
-         <%= form_with model: Game.new do |f| %>
+         <%= form_with model: Game.new, local: true do |f| %>
            <h6>メインビジュアル</h6>
            <% if false %>
              <% if @game.image.attached? %>
@@ -28,16 +28,18 @@
   
            <%= f.file_field :image, accept: "image/*", class: "w-100" %>
              <div>
-               <h6>タイトル(必須)</h6>
-               <%= f.text_field :title %>
+               <h6>タイトル(必須、50字まで)</h6>
+               <%= f.text_field :title, class: "form-control" %>
              </div>
+             <br>
              <div>
-	             <h6>見出し（必須）</h6>
-                <%= f.text_area :caption %>
+	            <h6>見出し（必須、50字まで）</h6>
+                <%= f.text_area :caption, class: "form-control" %>
              </div>
+             <br>
              <div>
-               <h6>自由記述欄</h6>
-               <%= f.text_area :main_text %>
+               <h6>自由記述欄（400字まで）</h6>
+               <%= f.text_area :main_text, class: "form-control", rows: 5 %>
              </div> 
            <hr>
           <%= f.submit '投稿' %>
