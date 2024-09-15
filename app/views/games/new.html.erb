@@ -1,40 +1,48 @@
 <div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">新規投稿</h5>
+       <div class="form-body p-4">
+         <!-- エラーメッセージ -->
+         <% if @game.errors.any? %>
+          <ul class="alert alert-danger" role="alert">
+            <h6 class="alert-heading">
+              <%= @game.errors.count %>件のエラーが発生しました
+            </hr>
+            <% @game.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+         <% end %>
 
-<h1>新規投稿</h1>
-
-<!-- エラーメッセージ -->
-<% if @game.errors.any? %>
-  <%= @game.errors.count %>件のエラーが発生しました
-  <ul>
-  <% @game.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-   </ul>
-<% end %>
-
-<!-- form_with部分 -->
-<%= form_with model: Game.new do |f| %>
-
-  <h6>メインビジュアル</h6>
-  <% if @game.image.attached? %>
-    <div>
-      <%= image_tag(@game.image, class:"img-fluid") %>
+         <%= form_with model: Game.new do |f| %>
+           <h6>メインビジュアル</h6>
+           <% if false %>
+             <% if @game.image.attached? %>
+               <div>
+               <%= image_tag(@game.image, class:"img-fluid") %>
+               </div>
+               <% else %>
+             <% end %>
+           <% end %>
+  
+           <%= f.file_field :image, accept: "image/*", class: "w-100" %>
+             <div>
+               <h6>タイトル(必須)</h6>
+               <%= f.text_field :title %>
+             </div>
+             <div>
+	             <h6>見出し（必須）</h6>
+                <%= f.text_area :caption %>
+             </div>
+             <div>
+               <h6>自由記述欄</h6>
+               <%= f.text_area :main_text %>
+             </div> 
+           <hr>
+          <%= f.submit '投稿' %>
+        <% end %>
+      </div>
     </div>
-    <% else %>
-  <% end %>
-  
-  <%= f.file_field :image, accept: "image/*" %>
-
-  <h6>タイトル(必須)</h6>
-  <%= f.text_field :title %>
-	
-  <h6>見出し（必須）</h6>
-  <%= f.text_area :caption %>
-  
-  <h6>自由記述欄</h6>
-  <%= f.text_area :main_text %>
-
-  <%= f.submit '投稿' %>
-<% end %>
-
+  </div>
 </div>
