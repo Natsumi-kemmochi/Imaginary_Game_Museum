@@ -1,0 +1,36 @@
+<table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Title</th>
+          <th scope="col">caption&text</th>
+          <th scope="col"></th>
+          <th  colspan="4"></th>
+        </tr>
+      </thead> 
+      <tbody>
+        <% games.each do |game| %>
+        <tr>
+          <td>
+            <%# メイン画像 %>
+            <div class="thumbnail" style="display: flex; flex-direction: column;">
+              <%= link_to game_path(game.id) do %>
+                <%= image_tag game.image, size: "200x200" %>
+              <% end %>
+            </div>
+          </td>
+          <td>
+            <%# タイトル %>
+            <strong><span><%= game.title %></span></strong>
+          </td>
+          <td>
+            <%# キャプション %>
+　          <span><%= game.caption %></span>
+　          <br>
+  　         <%# 自由記述欄 %>
+          　<span><%= game.main_text %></span>
+          　</td>
+         </tr>
+         <% end %>
+       </tbody>
+     </table>
