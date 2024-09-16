@@ -31,6 +31,7 @@ class DetailsController < ApplicationController
   end
   
   def update
+    @game = Game.find(params[:game_id])
     @detail = Detail.find(params[:id])
     if  @detail.update(detail_params)
         flash[:notice] = "You have updated detail successfully."

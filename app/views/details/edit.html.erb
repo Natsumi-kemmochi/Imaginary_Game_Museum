@@ -18,8 +18,7 @@
            
           <%= form_with model: [@game, @detail], local: true do |f| %>
           <div>
-            <%# はみでる %>
-            <%= image_tag @detail.image %>
+            <%= image_tag @detail.image, class: "w-100" %>
           </div>
           <br>
           <div>
