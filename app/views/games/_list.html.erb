@@ -3,16 +3,23 @@
     <div class="col-lg-4 col-md-6">
       <%# メイン画像 %>
       <%= link_to game_path(game.id) do %>
-        <%= image_tag game.image, class: "card-img-top p-3 d-flex align-items-center justify-content-center", style: "width: 320px; height: 240px;" %>
+        <%= image_tag game.image, class: "border m-2 p-2 d-flex align-items-center justify-content-center", style: "width: 320px; height: 240px;" %>
       <% end %>
     </div>
     <div class="col-lg-8 col-md-6 p-2"> 
       <h4 class="mt-1"><strong><%= game.title %></strong></h4>
       <h6 class="mt-2"><span><strong><%= game.caption %></strong></span></h6>
       <h6 class="mt-1 lh-lg"><span><%= test_method(game.main_text) %></span></h6>
-      <h6 class="text-muted align-bottom">
+      <h6 class="text-muted text-bottom">
         <span>最終更新　<%= game.updated_at&.strftime("%Y年 %m月 %d日 %H時 %M分") %></span>
       </h6>
     </div>
   </div>
 <% end %>
+<div class="row justify-content-center mt-3">
+  <div class="Page navigation example">
+    <%= paginate games %>
+  </div>
+</div>
+
+

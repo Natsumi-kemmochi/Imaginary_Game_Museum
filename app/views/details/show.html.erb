@@ -1,25 +1,21 @@
 <div class="container">
+  <div class="row mt-3 p-2 bg-light justify-content-center">
+    <%= image_tag @detail.image, size: "200x200" %>
+    <br><br>
+    <%= @detail.sub_text %>
+    <br><br>
 
-<%= image_tag @detail.image, size: "200x200" %>
-<br><br>
-<%= @detail.sub_text %>
-<br><br>
+    <%= link_to "戻る", game_path(@game) %>
+    <br><br>
 
-<%= link_to "戻る", game_path(@game) %>
-<br><br>
-
-<%if @game.user_id == current_user.id %>
-  <div>
-    <%= link_to edit_game_detail_path(@detail.game_id, @detail.id), class: 'btn btn-light btn-outline-dark' do %>
-      詳細の編集
+    <%if @game.user_id == current_user.id %>
+      <div>
+        <%= link_to edit_game_detail_path(@detail.game_id, @detail.id), class: 'btn btn-light btn-outline-dark' do %>
+         詳細の編集
+        <% end %>
+      </div>
+      <br><br>
+     
     <% end %>
   </div>
-  <br><br>
-  <div>
-    <%= link_to game_detail_path(@detail.game_id, @detail.id), method: :delete, data: { confirm: "この操作は取り消せません。本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
-      この記事を削除
-    <% end %>
-  </div>
-<% end %>
-  
 </div>

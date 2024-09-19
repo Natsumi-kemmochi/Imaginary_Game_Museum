@@ -37,5 +37,12 @@
       </div>
     </div>
   </div>
+  <div class="row justify-content-center">
+    <div class="shadow-lg rounded px-0 my-5">
+      <%= link_to game_detail_path(@detail.game_id, @detail.id), method: :delete, data: { confirm: "この操作は取り消せません。本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
+        この記事を削除
+      <% end %>
+    </div>
+  </div>
 </div>
 
