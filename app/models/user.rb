@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :games, dependent: :destroy
   has_one_attached :image
   
-  validates :name, length: { in: 1..20 }
+  validates :name, length: { in: 1..10 }
   validates :name, presence: true
   validates :introduction, length: { maximum: 200 }
   

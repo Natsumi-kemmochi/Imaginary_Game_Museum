@@ -1,37 +1,18 @@
-<%# game/indexとuser/showの共通 %>
-  <div class="card-list-container  d-flex p-5">
-    <div class="row">
-    <% games.each do |game| %>
+<% games.each do |game| %>
+  <div class="row mt-3 p-2 bg-light">
+    <div class="col-lg-4 col-md-6">
       <%# メイン画像 %>
-      <div class="card w-25 mx-auto mt-2 mr-2 thumbnail" >
-        <%= link_to game_path(game.id) do %>
-          <%= image_tag game.image, class: "card-img-top p-3"; %>
-        <% end %>
-        <div class="card-body">
-          <%# タイトル %>
-          <p class="title">
-            <strong><span><%= game.title %></span></strong>
-          </p>
-          <%# キャプション %>
-          <p class="caption text-truncate" style="max-height:200px;">
-            <span><%= game.caption %></span>
-　        </p>
-　        <br>
-　         <%# 自由記述欄 %>
-　         <p class="main_tex text-truncatet" style="max-height:200px;">
-  　         <span><%= game.main_text %></span>
-           </p>
-            <%# 更新日時 %>
-           <p class="update" style="max-height:200px;">
-  　         <span><%= game.updated_at&.strftime("%Y年 %m月 %d日 %H時 %M分") %>更新</span>
-           </p>
-            <%#作成新日時 %>
-           <p class="created" style="max-height:200px;">
-  　         <span><%= game.created_at&.strftime("%Y年 %m月 %d日 %H時 %M分") %>作成</span>
-           </p>
-        
-         </div>
-       </div>  
-     <% end %>
-   </div> 
- </div> 
+      <%= link_to game_path(game.id) do %>
+        <%= image_tag game.image, class: "card-img-top p-3 d-flex align-items-center justify-content-center", style: "width: 320px; height: 240px;" %>
+      <% end %>
+    </div>
+    <div class="col-lg-8 col-md-6 p-2"> 
+      <h4 class="mt-1"><strong><%= game.title %></strong></h4>
+      <h6 class="mt-2"><span><strong><%= game.caption %></strong></span></h6>
+      <h6 class="mt-1 lh-lg"><span><%= test_method(game.main_text) %></span></h6>
+      <h6 class="text-muted align-bottom">
+        <span>最終更新　<%= game.updated_at&.strftime("%Y年 %m月 %d日 %H時 %M分") %></span>
+      </h6>
+    </div>
+  </div>
+<% end %>

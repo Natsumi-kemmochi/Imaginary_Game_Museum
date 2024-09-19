@@ -1,35 +1,28 @@
 <div class="container">
-   <div class="row justify-content-center">
-  
-  <% if @user.image.attached? %>
-   <%= image_tag @user.image, size: "100x100"  %>
-  <% else %>
-    <%= image_tag 'no_image', size: "100x100" %>
-  <% end %>
-
+  <div class="row mt-5 p-3 bg-light">
+    <div class="col-lg-2 col-md-3 col-sm-5 d-flex align-items-center justify-content-center">
+      <% if @user.image.attached? %>
+       <%= image_tag @user.image, size: "100x100"  %>
+      <% else %>
+        <%= image_tag 'no_image', size: "100x100" %>
+      <% end %>
+    </div>
+     <div class="col-lg-10 col-md-9 col-sm-7 mt-2">
+       <h5><strong><%= @user.name %></strong></h5>
+       <h6><%= @user.introduction %></h6>
+       <% if @user == current_user %>
+       <div class="edit_user mt-2">
+         <%= link_to edit_user_path(@user), class: "btn btn-light btn-outline-dark" do %>
+          ユーザー情報変更</i>
+         <% end %>
+       </div>
+       <% end %>
+     </div>
+  </div>
 <br><br>
 
-
-<p><%= @user.name %></p>
-
-<p><%= @user.introduction %></p>
-
-<p><%= @user.link %></p>
-
-<% if @user == current_user %>
-  <div class="edit_user">
-     <%= link_to edit_user_path(@user), class: "btn btn-light btn-outline-dark" do %>
-       ユーザー情報変更</i>
-     <% end %>
-  </div>
-<% end %>
-
-<br>
 <p>ユーザーの投稿一覧</p>
 <%#共通テンプレート %>
 <%= render 'games/list', games: @games %>
 
-<%= paginate @games %>
-
-  </div>
 </div>
