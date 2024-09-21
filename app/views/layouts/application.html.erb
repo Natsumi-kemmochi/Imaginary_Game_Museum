@@ -57,9 +57,11 @@
     </header>
     
     
-    <main class="mb-auto" >
-      <p class="notice"><%= notice %></p>
-      <%= yield %>
+    <main class="bg-secondary" >
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+        <%= yield %>
     </main>
     
   </body>
