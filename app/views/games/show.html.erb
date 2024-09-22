@@ -1,6 +1,9 @@
 <div class="container bg-light">
+  <% if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
   <div class="row p-2 justify-content-center d-flex">
-    <%= image_tag(@game.image, class: "border m-2 p-2") %>
+    <%= image_tag(@game.image, class: "border m-2 p-2 img-fluid") %>
   </div>
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8">

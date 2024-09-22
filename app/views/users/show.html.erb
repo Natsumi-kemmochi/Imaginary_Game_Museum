@@ -1,4 +1,7 @@
 <div class="container">
+  <% if notice %>
+    <p class="notice text-light"><%= notice %></p>
+  <% end %>
   <div class="row p-3 bg-light">
     <div class="col-lg-2 col-md-3 col-sm-5 d-flex align-items-center justify-content-center">
       <% if @user.image.attached? %>
@@ -21,7 +24,7 @@
   </div>
 <br><br>
 
-<p>ユーザーの投稿一覧</p>
+<p class="text-light">ユーザーの投稿一覧</p>
 <%#共通テンプレート %>
 <%= render 'games/list', games: @games %>
 
