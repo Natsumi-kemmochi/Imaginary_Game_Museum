@@ -9,6 +9,7 @@ class User < ApplicationRecord
   
   validates :name, length: { maximum: 15 }
   validates :name, presence: true
+  validates :email, uniqueness: true
   validates :introduction, length: { maximum: 200 }
   
   def get_profile_image
