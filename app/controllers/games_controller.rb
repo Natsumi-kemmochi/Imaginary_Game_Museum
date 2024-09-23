@@ -50,9 +50,9 @@ class GamesController < ApplicationController
   # ストロングパラメータ
    private
    
-   def game_params
-     params.require(:game).permit(:title, :caption, :main_text, :image)
-   end
+  def game_params
+    params.require(:game).permit(:title, :caption, :main_text, :image)
+  end
    
   def is_matching_login_user
     game =  Game.find(params[:id])

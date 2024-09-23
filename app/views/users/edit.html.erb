@@ -36,15 +36,17 @@
           <h6>自己紹介文（200字まで）</h6>
           <%= f.text_area :introduction, autofocus: true, class: "form-control", rows: 3 %><br>
         </div>
+        <hr>
         <%= f.submit "更新する", class: 'btn btn-secondary' %>
       <% end %>
-      <br><br><br><br>
-      <div class="destroy_user">
-        <%= link_to user_path(@user.id), method: :delete, data: { confirm: "すべての投稿が削除されますが、本当に退会しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
-        退会する
-        <% end %>
-      </div>
      </div>
     </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="shadow-lg rounded px-0 my-5 bg-light">
+      <%= link_to user_path(@user.id), method: :delete, data: { confirm: "すべての投稿が削除されますが、本当に退会しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
+        退会する
+      <% end %>
+    </div> 
   </div>
 </div>
