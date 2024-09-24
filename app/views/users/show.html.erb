@@ -10,9 +10,12 @@
         <%= image_tag(asset_path('no_image.jpg'), size: "100x100") %>
       <% end %>
     </div>
+    
      <div class="col-lg-10 col-md-9 col-sm-7 mt-2">
        <h5><strong><%= @user.name %></strong></h5>
        <h6><%= @user.introduction %></h6>
+       
+       <%# ログインユーザーのとき %>
        <% if @user == current_user %>
        <div class="edit_user mt-2">
          <%= link_to edit_user_path(@user), class: "btn btn-light btn-outline-dark", data: {"turbolinks" => false} do %>
@@ -20,6 +23,25 @@
          <% end %>
        </div>
        <% end %>
+       <%# ここまで %>
+       
+       
+       <%# ログインユーザーのとき %>
+       <% if @user == current_user %>
+       <div class="icon mt-3">
+         <a href="<%= root_path %>">
+           <i class="fa-solid fa-book">ブックマーク</i>
+         </a>
+       </div>
+       <div class="icon mt-3 mb-2">
+         <a href="<%= root_path %>">
+           <i class="fa-solid fa-user">お気に入りユーザー</i>
+         </a>
+       </div>
+       <% end %>
+       <%# ここまで %>
+
+       
      </div>
   </div>
 <br><br>
