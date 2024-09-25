@@ -4,7 +4,7 @@ class Detail < ApplicationRecord
   
   belongs_to :game
 
-  validates :image, presence: true
+  validates :image,  attached: true, content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、画像ではありません。' }
   validates :sub_text, length: { maximum: 800 }
   
     def get_image(width, height)

@@ -9,6 +9,6 @@ class Game < ApplicationRecord
   validates :caption, length: { maximum: 50 }
   validates :caption, presence: true
   validates :main_text, length: { maximum: 400 }
-  validates :image, presence: true
+  validates :image,  attached: true, content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、画像ではありません。' }
   
 end

@@ -11,8 +11,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
   validates :introduction, length: { maximum: 200 }
-  
-  def get_profile_image
-  end
+  validates :image,  content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、画像ではありません。' }
+
   
 end
