@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
   validates :introduction, length: { maximum: 200 }
-  validates :image,  content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、画像ではありません。' }
+  validates :image,  content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、JPG/JPEG/PNG/GIFのみアップロード可能です。' }
 
   
 end
