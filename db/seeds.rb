@@ -60,7 +60,7 @@ Game.find_or_create_by!(id: "4") do |game|
   game.user_id = 1
 end
 
-Game.find_or_create_by!(title: "5") do |game|
+Game.find_or_create_by!(id: "5") do |game|
   game.title = "妖精の国"
   game.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post5.jpg"), filename:"sample-post5.jpg")
   game.caption = "儚く美しい物語"
