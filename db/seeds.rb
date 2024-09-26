@@ -8,16 +8,24 @@
 
 puts "seedの実行を開始"
 
-olivia = User.find_or_create_by!(email: "olivia@example.com") do |user|
-  user.name = "Olivia"
+名もなき投稿者 = User.find_or_create_by!(email: "olivia@example.com") do |user|
+  user.name = "名もなき投稿者"
   user.password = "123456"
+  user.introduction = "いつか皆と考えたゲームを完成させたいと思っています。よろしくお願いします。"
   user.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.png"), filename:"sample-user1.png")
 end
 
-james = User.find_or_create_by!(email: "james@example.com") do |user|
-  user.name = "James"
+じぇーむず = User.find_or_create_by!(email: "james@example.com") do |user|
+  user.name = "じぇーむず"
   user.password = "123456"
+  user.introduction = "のんびりした世界観が好き"
   user.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.png"), filename:"sample-user2.png")
+end
+
+ルーカス = User.find_or_create_by!(email: "lucas@example.com") do |user|
+  user.name = "ルーカス"
+  user.password = "123456"
+  user.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.png"), filename:"sample-user3.png")
 end
 
 Game.find_or_create_by!(title: "勇者の冒険") do |game|
