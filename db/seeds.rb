@@ -34,9 +34,15 @@ Game.find_or_create_by!(title: "ゾンビファーム") do |game|
   game.user_id = 2
 end
 
-Detail.find_or_create_by!(game_id: "1") do |detail|
+Detail.find_or_create_by!(id: "1") do |detail|
   detail.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1-1.png"), filename:"sample-post1-1.png")
-  detail.sub_text = "これはどこでどうやって手に入る？"
+  detail.sub_text = "これを入手した経緯は？"
+  detail.game_id = 1
+end
+
+Detail.find_or_create_by!(id: "2") do |detail|
+  detail.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1-2.png"), filename:"sample-post1-2.png")
+  detail.sub_text = "頼れる仲間たち"
   detail.game_id = 1
 end
 
