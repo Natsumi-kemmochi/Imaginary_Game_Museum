@@ -34,9 +34,9 @@
   <p class="text-center mt-5"><strong>もっと見る</strong></p>
     <div class="row mt-3 p-2 justify-content-center d-flex">
       <% @details.each do |detail| %>
-        <div>
+        <div class="border m-2 p-2 d-flex" style="width:210px;height:210px">
           <%= link_to game_detail_path(detail.game_id, detail.id) do %>
-            <%= image_tag detail.get_image(200,200), class: "border m-2 p-2 d-flex align-items-center justify-content-center" %>
+            <%= image_tag detail.get_image(200,200), class: "align-items-center justify-content-center" %>
            <% end %>
         </div>
        <% end %>
