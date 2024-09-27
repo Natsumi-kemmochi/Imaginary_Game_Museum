@@ -1,12 +1,14 @@
 <% games.each do |game| %>
   <div class="row mt-3 p-2 bg-light">
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-5 col-md-6">
       <%# メイン画像 %>
-      <%= link_to game_path(game.id) do %>
-        <%= image_tag game.image, class: "border m-2 p-2 d-flex align-items-center justify-content-center", style: "width: 320px; height: 240px;" %>
-      <% end %>
+      <div class="border m-2 p-2 d-flex" style="width:330px;height:250px">
+        <%= link_to game_path(game.id) do %>
+          <%= image_tag game.image, class: "align-items-center justify-content-center", style: "width: 320px; height: 240px;" %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-lg-8 col-md-6 p-2"> 
+    <div class="col-lg-7 col-md-6 p-2"> 
       <h4 class="mt-1"><strong><%= game.title %></strong></h4>
       <h6 class="mt-2"><span><strong><%= game.caption %></strong></span></h6>
       <h6 class="mt-1 lh-lg"><span><%= test_method(game.main_text) %></span></h6>
