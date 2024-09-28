@@ -10,15 +10,17 @@ class Game < ApplicationRecord
   validates :main_text, length: { maximum: 400 }
   validates :image,  attached: true, content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、JPG/JPEG/PNG/GIFのみアップロード可能です。' }
 
-  def self.search_for(content, method)
-    if method == 'perfect'
-      Game.where(title: content)
-    elsif method == 'forward'
-      Game.where('title LIKE ?', content+'%')
-    elsif method == 'backward'
-      Game.where('title LIKE ?', '%'+content)
+  def self.looks(search, word)
+    if search == 'perfect'
+      @game = Game.where('title LIKE?', "#{word}%")
+    elsif search == 'forward'
+      @game = Game.where('title LIKE?', "#{word}%")
+    elsif search == 'backward'
+      @game = Game.where('title LIKE?', "#{word}%")
+    elsif search == "partial"
+      @game = Game.where('title LIKE?', "#{word}%")
     else
-      Game.where('title LIKE ?', '%'+content+'%')
+      @game = Game.all
     end
   end
   

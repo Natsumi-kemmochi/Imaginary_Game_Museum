@@ -20,11 +20,11 @@
           </div>
           <%#　検索ボックス %>
           <% if user_signed_in? %>
-          <div class="search">
+          <div class="search_form">
             <%= form_with url: search_path, method: :get, local: true do |f| %>
-              <%= f.text_field :content %>
-              <%= f.select :model, options_for_select({ "ゲーム" => "game", "詳細" => "detail", "ユーザー" => "user" }) %>
-              <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+              <%= f.text_field :word %>
+              <%= f.select :range, options_for_select({ "ゲーム" => "Game", "ユーザー" => "User" }) %>
+              <%= f.select :search, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
               <%= f.submit '検索' %>
             <% end %>
           </div>

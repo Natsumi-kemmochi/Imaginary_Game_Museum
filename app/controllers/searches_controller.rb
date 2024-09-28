@@ -2,15 +2,13 @@ class SearchesController < ApplicationController
   before_action :authenticate_user!
     #Imaginary_Game_Museum
 	def search
-	   @model = params[:model]
-	   @content = params[:content]
-	   @method = params[:method]
-       if @model == 'game'
-		   @records = Game.search_for(@content, @method)
-       #elsif @model == 'detail'
-		   #@records = Detail.search_for(@content, @method)
+	   @range = params[:range]
+	   @word = params[:word]
+	   
+       if @range == "Game"
+		 @games = Game.looks(params[:search], params[:word])
        else
-		  @records = User.search_for(@content, @method)
+		 @Users = User.looks(params[:search], params[:word])
        end
 	end
 end
