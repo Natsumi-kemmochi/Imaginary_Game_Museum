@@ -15,7 +15,21 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container ">
-          <%= link_to "イマジナリーゲーム博物館", root_path, class: "h6 text-light" %>
+          <div class="logo mr-3">
+            <%= link_to "イマジナリーゲーム博物館", root_path, class: "h6 text-light" %>
+          </div>
+          <%#　検索ボックス %>
+          <% if user_signed_in? %>
+          <div class="search">
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= f.text_field :content %>
+              <%= f.select :model, options_for_select({ "ゲーム" => "game", "詳細" => "detail", "ユーザー" => "user" }) %>
+              <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+              <%= f.submit '検索' %>
+            <% end %>
+          </div>
+          <% end %>
+          <%#　ここまで %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,9 +48,6 @@
                  </li>
                  <li class="nav-item">
                    <%= link_to "ジャンル", root_path, class: 'nav-link text-light' %>
-                 </li>
-                 <li class="nav-item">
-                   <%= link_to "検索ボックス", root_path, class: 'nav-link text-light' %>
                  </li>
                  <li class="nav-item">
                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class:"nav-link text-light" %>
