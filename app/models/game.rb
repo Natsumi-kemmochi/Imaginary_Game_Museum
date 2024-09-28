@@ -13,10 +13,6 @@ class Game < ApplicationRecord
   def self.looks(search, word)
     if search == 'perfect'
       @game = Game.where('title LIKE?', "#{word}%")
-    elsif search == 'forward'
-      @game = Game.where('title LIKE?', "#{word}%")
-    elsif search == 'backward'
-      @game = Game.where('title LIKE?', "#{word}%")
     elsif search == "partial"
       @game = Game.where('title LIKE?', "#{word}%")
     else

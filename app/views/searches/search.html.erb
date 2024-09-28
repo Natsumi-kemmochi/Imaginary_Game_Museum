@@ -1,8 +1,8 @@
 <%# Imaginary_Game_Museum %>
 <% if @range == 'user' %>
-	<h3>Users search for "<%= @users %>"</h3>
+	<h3>"<%= @word %>"の検索結果一覧</h3>
   <%= render 'users/index', users: @users %>
 <% else @range == 'game' %>
-	<h3>"<%=  @word %>"の検索結果</h3>
+	<h3>"<%= @word %>"の検索結果一覧</h3>
   <%= render 'games/list', games: @games %>
 <% end %>

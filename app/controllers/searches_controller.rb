@@ -6,9 +6,9 @@ class SearchesController < ApplicationController
 	   @word = params[:word]
 	   
        if @range == "Game"
-		 @games = Game.looks(params[:search], params[:word])
+		 @games = Game.looks(params[:search], params[:word]).page(params[:page])
        else
-		 @Users = User.looks(params[:search], params[:word])
+		 @Users = User.looks(params[:search], params[:word]).page(params[:page])
        end
 	end
 end
