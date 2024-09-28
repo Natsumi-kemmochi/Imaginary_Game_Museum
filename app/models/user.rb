@@ -13,15 +13,13 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 200 }
   validates :image,  content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、JPG/JPEG/PNG/GIFのみアップロード可能です。' }
 
-  def self.search_for(content, method)
-    if method == 'perfect'
-      User.where(name: content)
-    elsif method == 'forward'
-      User.where('name LIKE ?', content+'%')
-    elsif method == 'backward'
-      User.where('name LIKE ?', '%'+content)
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?", "%#{word}%")
     else
-      User.where('name LIKE ?', '%'+content+'%')
+      @user = User.all
     end
   end
   

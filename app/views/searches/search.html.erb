@@ -1,8 +1,8 @@
 <div class="container">
   <p class="pt-3 text-light">"<%= @word %>"の検索結果一覧</p>
-  <% if @range == 'user' %>
-     <%= render 'users/index', users: @users %>
-  <% else @range == 'game' %>
+  <% if @range == 'User' %>
+     <%= render 'users/list', users: @users %>
+  <% else @range == 'Game' %>
      <%= render 'games/list', games: @games %>
   <% end %>
 </div>
