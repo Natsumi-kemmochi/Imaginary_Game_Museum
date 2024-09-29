@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     resources :details, only: [:new, :create, :show, :edit, :update, :destroy]
   end
   
+  get "search" => "searches#search"
+  
 end

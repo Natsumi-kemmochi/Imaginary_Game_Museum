@@ -1,0 +1,24 @@
+<% users.each do |user| %>
+  <div class="row mt-3 p-2 bg-light">
+    <div class="col-lg-5 col-md-6">
+      <%# メイン画像 %>
+      <div class="border m-2 p-2 d-flex" style="width:110px;height:110px">
+        <%= link_to user_path(user.id) do %>
+          <%= image_tag user.image, class: "align-items-center justify-content-center", style: "width: 100px; height: 100px;" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-7 col-md-6 p-2"> 
+      <h6 class="mt-1 ml-2"><strong><%= user.name %></strong></h6>
+      <%# ここに投稿ゲームの画像を表示 %>
+      <h6 class="mt-1 lh-lg"><span><%# test_method(game.main_text) %></span></h6>
+    </div>
+  </div>
+<% end %>
+<div class="row justify-content-center mt-3 pb-3">
+  <div class="Page navigation">
+    <%= paginate users %>
+  </div>
+</div>
+
+

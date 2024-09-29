@@ -1,9 +1,11 @@
-<div class="container bg-light">
+<div class="container">
+  <%= render 'searches/form' %>
   <% if notice %>
-    <p class="notice"><%= notice %></p>
+    <p class="notice text-light"><%= notice %></p>
   <% end %>
-  <div class="row p-2 justify-content-center d-flex">
-    <%= image_tag(@game.image, class: "border m-2 p-2 img-fluid") %>
+  <div class="bg-light">
+  <div class="row p-3 justify-content-center d-flex">
+    <%= image_tag(@game.image, class: "border p-2") %>
   </div>
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8">
@@ -46,5 +48,6 @@
   </div>
   <div class="row mt-3 p-2 justify-content-center">
     <%= paginate @details %>
+  </div>
   </div>
 </div>
