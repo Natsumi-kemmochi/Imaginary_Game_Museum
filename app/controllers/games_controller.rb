@@ -20,6 +20,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @details = @game.details.page(params[:page])
+    @game_comment = GameComment.new
   end
 
   def index

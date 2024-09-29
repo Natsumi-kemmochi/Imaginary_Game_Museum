@@ -3,9 +3,22 @@
   <% if notice %>
     <p class="notice text-light"><%= notice %></p>
   <% end %>
+  
+  <div class ="comment_form">
+    <%= form_with model: [@game, @game_comment] do |f| %>
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+    <p>コメント(<%= @game.game_comments.count %>)</p>
+    <% @game.game_comments.each do |game_comment| %>
+      <%= game_comment.user.name %>
+      <%= game_comment.created_at.strftime('%Y/%m/%d') %><%= game_comment.comment %>
+    <% end %>
+  </div>
+  
   <div class="bg-light">
   <div class="row p-3 justify-content-center d-flex">
-    <%= image_tag(@game.image, class: "border p-2") %>
+    <%= image_tag(@game.image, class: "img-fluid pr-3 pl-3") %>
   </div>
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8">
