@@ -1,8 +1,11 @@
-<div class="container bg-white">
+<div class="container">
+  
+  <%= render 'searches/form' %>
+
   <% if notice %>
-    <p class="notice"><%= notice %></p>
+    <p class="notice text-light"><%= notice %></p>
   <% end %>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center bg-white">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto text-left">
       <%= image_tag(asset_path('top_image.jpg'), class:"img-fluid mt-5") %>
       
