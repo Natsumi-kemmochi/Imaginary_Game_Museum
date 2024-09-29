@@ -2,7 +2,9 @@ class Game < ApplicationRecord
   #Imaginary_Game_Museum
   has_one_attached :image
   has_many :details, dependent: :destroy
+  has_many :game_comments, dependent: :destroy
   belongs_to :user
+  
   validates :title, length: { maximum: 30 }
   validates :title, presence: true
   validates :caption, length: { maximum: 50 }
