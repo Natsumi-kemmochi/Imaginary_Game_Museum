@@ -13,4 +13,5 @@ Kaminari.configure do |config|
   # config.params_on_first_page = false
   
   #config.default_per_page = 4
+  
 end
