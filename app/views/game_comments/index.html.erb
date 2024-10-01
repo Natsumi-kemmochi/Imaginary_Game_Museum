@@ -1,0 +1,16 @@
+  <!-- 投稿コメント一覧 -->  
+  <div class ="comment_index">
+    <% @game.game_comments.each do |game_comment| %>
+      <p><%= game_comment.user.name %></p>
+      <p><%= game_comment.comment %><p>
+      <p><%= game_comment.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %><p>
+      <div> 
+        <% if game_comment.user == current_user %>
+          <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete %>
+        <% elsif @game.user == current_user %>
+          <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>  
+  <!-- ここまで -->

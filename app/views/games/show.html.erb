@@ -43,11 +43,13 @@
   <div class="row pt-3 justify-content-center">
     <p>コメント(<%= @game.game_comments.count %>)</p>
   </div>
+  <!-- form_withとdivが入れ替わると再リロードが必要 --> 
+   <%= form_with model: [@game, @game_comment] do |f| %>
     <div class="row justify-content-center">
-      <%= form_with model: [@game, @game_comment] do |f| %>
       <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く(400字まで)", class: "form-control"  %>
     </div>
-    <div class="row mt-5 justify-content-center">
+  <!-- ここまで --> 
+    <div class="row mt-5 pb-5 justify-content-center">
       <%= f.submit "送信する" %>
     </div>
     <% end %>

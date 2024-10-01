@@ -5,6 +5,8 @@ class Detail < ApplicationRecord
   validates :image,  attached: true, content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、JPG/JPEG/PNG/GIFのみアップロード可能です。' }
   validates :sub_text, length: { maximum: 800 }
   
+  paginates_per 4
+  
     def get_image(width, height)
       unless image.attached?
         file_path = Rails.root.join('app/assets/images/no_image.jpg')
