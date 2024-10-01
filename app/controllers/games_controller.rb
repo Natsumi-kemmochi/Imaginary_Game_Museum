@@ -20,11 +20,13 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @details = @game.details.page(params[:page])
+    #.order(created_at: :desc)後ろにつけると新着順になる
     @game_comment = GameComment.new
   end
 
   def index
     @games = Game.page(params[:page])
+    #.order(created_at: :desc)後ろにつけると新着順になる
   end
 
   def edit

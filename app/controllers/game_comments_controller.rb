@@ -14,6 +14,7 @@ class GameCommentsController < ApplicationController
   
   def index
     @game = Game.find(params[:game_id])
+    #.order(created_at: :desc)後ろにつけると新着順になる（ここではエラーあり）
   end
   
   def destroy

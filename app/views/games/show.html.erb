@@ -40,8 +40,8 @@
     </div>     
   <% end %>
   
-  <div class="row pt-3 justify-content-center">
-    <p>コメント(<%= @game.game_comments.count %>)</p>
+  <div class="row mb-3 justify-content-center">
+    <%= link_to "コメント(#{@game.game_comments.count})", game_game_comments_path(@game.id) %>
   </div>
   <!-- form_withとdivが入れ替わると再リロードが必要 --> 
    <%= form_with model: [@game, @game_comment] do |f| %>
@@ -53,25 +53,8 @@
       <%= f.submit "送信する" %>
     </div>
     <% end %>
-    
-  <!-- 投稿コメント一覧 -->  
-  <div class ="comment_index">
-    <% @game.game_comments.each do |game_comment| %>
-      <p><%= game_comment.user.name %></p>
-      <p><%= game_comment.comment %><p>
-      <p><%= game_comment.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %><p>
-      <div> 
-        <% if game_comment.user == current_user %>
-          <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete %>
-        <% elsif @game.user == current_user %>
-          <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>  
-  <!-- ここまで -->
   
-<% if @details.any? %>
+  <% if @details.any? %>
   <p class="text-center mt-5"><strong>もっと見る</strong></p>
     <div class="row mt-3 p-2 justify-content-center d-flex">
       <% @details.each do |detail| %>

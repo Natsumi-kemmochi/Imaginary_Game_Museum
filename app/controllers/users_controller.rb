@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])  
     @games = @user.games.page(params[:page])
+    #.order(created_at: :desc)後ろにつけると新着順になる
   end
 
   def edit
