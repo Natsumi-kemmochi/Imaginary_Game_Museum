@@ -4,9 +4,17 @@
     <p class="notice text-light"><%= notice %></p>
   <% end %>
   
+  <!-- エラーメッセージ -->
+    <% if @game_comment.errors.any? %>
+      <ul class="alert alert-danger" role="alert">
+        コメントは1~400字以内に収めてください
+      </ul>
+    <% end %>
+  <!-- ここまで -->
+  
   <div class ="comment_form">
     <%= form_with model: [@game, @game_comment] do |f| %>
-      <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く" %>
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く(400字まで)" %>
       <%= f.submit "送信する" %>
     <% end %>
     
