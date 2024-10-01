@@ -12,42 +12,21 @@
     <% end %>
   <!-- ここまで -->
   
-  <div class ="comment_form">
-    <%= form_with model: [@game, @game_comment] do |f| %>
-      <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く(400字まで)" %>
-      <%= f.submit "送信する" %>
-    <% end %>
-    
-    <p>コメント(<%= @game.game_comments.count %>)</p>
-    <% @game.game_comments.each do |game_comment| %>
-      <p><%= game_comment.user.name %></p>
-      <p><%= game_comment.comment %><p>
-      <p><%= game_comment.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %><p>
-      <div> 
-        <% if game_comment.user == current_user %>
-          <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete %>
-        <% elsif @game.user == current_user %>
-          <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  
   <div class="bg-light">
   <div class="row p-3 justify-content-center d-flex">
     <%= image_tag(@game.image, class: "img-fluid pr-3 pl-3") %>
   </div>
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8">
-      <p class="text-right">投稿者：<%= link_to @game.user.name, @game.user %></p>
+      <p class="text-right pr-3">投稿者：<%= link_to @game.user.name, @game.user %></p>
       <h4 class="text-center"><strong><%= @game.title %></strong></h4>
       <p class="mt-3 text-center"><strong><%= @game.caption %></strong></p>
-      <p class="mt-3"><%= @game.main_text %></p>
+      <p class="p-3 text-center"><%= @game.main_text %></p>
     </div>
   </div>
   
   <% if @game.user == current_user %>
-    <div class="row p-5 justify-content-center"> 
+    <div class="row p-3 justify-content-center"> 
       <div class="shadow rounded mr-5">
          <%= link_to edit_game_path(@game), class: "btn btn-light btn-outline-dark" do %>
             ゲーム情報変更</i>
@@ -60,7 +39,35 @@
       </div>
     </div>     
   <% end %>
- 
+  
+  <div class="row pt-3 justify-content-center">
+    <p>コメント(<%= @game.game_comments.count %>)</p>
+  </div>
+    <div class="row justify-content-center">
+      <%= form_with model: [@game, @game_comment] do |f| %>
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く(400字まで)", class: "form-control"  %>
+    </div>
+    <div class="row mt-5 justify-content-center">
+      <%= f.submit "送信する" %>
+    </div>
+    <% end %>
+    
+  <!-- 投稿コメント一覧 -->  
+  <div class ="comment_index">
+    <% @game.game_comments.each do |game_comment| %>
+      <p><%= game_comment.user.name %></p>
+      <p><%= game_comment.comment %><p>
+      <p><%= game_comment.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %><p>
+      <div> 
+        <% if game_comment.user == current_user %>
+          <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete %>
+        <% elsif @game.user == current_user %>
+          <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>  
+  <!-- ここまで -->
   
 <% if @details.any? %>
   <p class="text-center mt-5"><strong>もっと見る</strong></p>
