@@ -9,10 +9,17 @@
       <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く" %>
       <%= f.submit "送信する" %>
     <% end %>
+    
     <p>コメント(<%= @game.game_comments.count %>)</p>
     <% @game.game_comments.each do |game_comment| %>
-      <%= game_comment.user.name %>
-      <%= game_comment.created_at.strftime('%Y/%m/%d') %><%= game_comment.comment %>
+      <p><%= game_comment.user.name %></p>
+      <p><%= game_comment.comment %><p>
+      <p><%= game_comment.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %><p>
+      <div> 
+        <% if game_comment.user == current_user %>
+        <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   

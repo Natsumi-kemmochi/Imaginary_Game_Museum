@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #ネスト
   resources :games do
     resources :details, only: [:new, :create, :show, :edit, :update, :destroy]
-    resources :game_comments, only: [:create]
+    resources :game_comments, only: [:create, :destroy]
   end
   
   get "search" => "searches#search"

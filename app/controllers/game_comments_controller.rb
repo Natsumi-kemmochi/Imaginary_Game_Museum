@@ -7,6 +7,11 @@ class GameCommentsController < ApplicationController
     comment.save
     redirect_to game_path(game.id)
   end
+  
+  def destroy
+    GameComment.find(params[:id]).destroy
+    redirect_to game_path(params[:game_id])
+  end
 
   private
 
