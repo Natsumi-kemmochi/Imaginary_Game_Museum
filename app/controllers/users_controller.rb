@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])  
-    @games = @user.games.page(params[:page])
+    @games = @user.games.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
