@@ -5,13 +5,13 @@
   <% end %>
   <div class="row p-3 bg-light">
     <div class="col-lg-2 col-md-3 col-sm-5 d-flex align-items-center justify-content-center">
-      <% if @user.image.attached? %>
-        <div>
+      <div>
+        <% if @user.image.attached? %>
           <%= image_tag @user.image, size: "100x100"  %>
          <% else %>
           <%= image_tag(asset_path('no_image.jpg'), size: "100x100") %>
          <% end %>
-        </div>
+      </div>
     </div>
     
      <div class="col-lg-10 col-md-9 col-sm-7 mt-2">
