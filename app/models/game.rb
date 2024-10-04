@@ -2,7 +2,7 @@ class Game < ApplicationRecord
   #Imaginary_Game_Museum
   has_one_attached :image
   has_many :details, dependent: :destroy
-  has_many :game_comments, dependent: :destroy
+  has_many :game_comments, -> { newest_first }, dependent: :destroy
   belongs_to :user
   
   validates :title, length: { maximum: 30 }

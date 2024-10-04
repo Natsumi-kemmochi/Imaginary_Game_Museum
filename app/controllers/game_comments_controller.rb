@@ -14,7 +14,8 @@ class GameCommentsController < ApplicationController
   
   def index
     @game = Game.find(params[:game_id])
-    @game_comments = @game.game_comments.page(params[:page]).order(created_at: :desc)
+    @game_comment = GameComment.new
+    @game_comments = @game.game_comments.newest_first.page(params[:page])
   end
   
   def destroy
