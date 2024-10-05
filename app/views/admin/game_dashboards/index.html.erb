@@ -2,7 +2,9 @@
 <ul>
   <% @games.each do |game| %>
     <li>
-      <%= game.title %> - <%= game.main_text %>
+      <%= image_tag game.image, class: "align-items-center justify-content-center", style: "width: 320px; height: 240px;" %>
+      <%= game.title %>
+      <p><%= game.main_text %></p>
       <!-- リンクを追加 -->
       <%= link_to '削除', admin_game_path(game), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
     </li>

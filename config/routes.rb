@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :users, only: [:destroy]
     get 'game_dashboards', to: 'game_dashboards#index'
     resources :games, only: [:destroy]
+    get 'detail_dashboards', to: 'detail_dashboards#index'
+    resources :details, only: [:destroy]
   end
   
   devise_for :users

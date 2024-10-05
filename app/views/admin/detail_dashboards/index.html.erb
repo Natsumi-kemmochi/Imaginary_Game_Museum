@@ -1,0 +1,10 @@
+<h1>全詳細一覧</h1>
+<ul>
+  <% @details.each do |detail| %>
+    <li>
+      <%= image_tag detail.get_image(200,200) %>
+      <p><%= detail.sub_text %></p> 
+      <%= link_to '削除', admin_detail_path(detail), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
+    </li>
+  <% end %>
+</ul>
