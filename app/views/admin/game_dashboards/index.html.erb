@@ -1,0 +1,10 @@
+<h1>全ゲーム一覧</h1>
+<ul>
+  <% @games.each do |game| %>
+    <li>
+      <%= game.title %> - <%= game.main_text %>
+      <!-- リンクを追加 -->
+      <%= link_to '削除', admin_game_path(game), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
+    </li>
+  <% end %>
+</ul>
