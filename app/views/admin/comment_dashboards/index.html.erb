@@ -1,0 +1,9 @@
+<h1>全コメント（幻覚）一覧</h1>
+<ul>
+  <% @game_comments.each do |game_comment| %>
+    <li>
+      <%= game_comment.comment %>
+      <%= link_to '削除', admin_comment_path(game_comment), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
+    </li>
+  <% end %>
+</ul>

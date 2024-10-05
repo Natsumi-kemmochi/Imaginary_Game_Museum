@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :games, only: [:destroy]
     get 'detail_dashboards', to: 'detail_dashboards#index'
     resources :details, only: [:destroy]
+    get 'comment_dashboards', to: 'comment_dashboards#index'
+    resources :comments, only: [:destroy]
   end
   
   devise_for :users
