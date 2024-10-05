@@ -1,4 +1,4 @@
-<h1>全コメント（幻覚）一覧</h1>
+<h1>全コメント一覧</h1>
 <ul>
   <% @game_comments.each do |game_comment| %>
     <li>
@@ -6,4 +6,10 @@
       <%= link_to '削除', admin_comment_path(game_comment), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
     </li>
   <% end %>
+</ul>
+
+<ul>
+  <%= link_to 'ユーザー一覧へ', admin_dashboards_path %> <br>
+  <%= link_to 'ゲーム一覧へ', admin_game_dashboards_path %> <br>
+  <%= link_to '詳細一覧へ', admin_detail_dashboards_path %> 
 </ul>
