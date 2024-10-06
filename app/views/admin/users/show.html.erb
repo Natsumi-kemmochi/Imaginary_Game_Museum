@@ -6,9 +6,12 @@
       <%= image_tag(asset_path('no_image.jpg'), size: "100x100") %>
     <% end %>
   </div>
+  
+  
   <div>
     <h5><strong><%= @user.name %></strong></h5>
     <h6><%= @user.introduction %></h6>
+     <%= link_to 'このユーザーを削除', admin_user_path(@user), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
   </div>
 
 <br><br>
