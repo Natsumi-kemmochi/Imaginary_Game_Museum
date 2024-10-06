@@ -1,20 +1,42 @@
-<h1>全ユーザー一覧</h1>
-<ul>
+<div class="container mb-5">
+  <%= render 'admin/shared/dashboards' %>
+  <h1>全ユーザー一覧</h1>
+
   <% @users.each do |user| %>
-    <li>
-      <%= user.name %> - <%= user.email %>
-      <%= link_to '詳細', admin_user_path(user.id) %>
-      <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
-    </li>
+    <table class="table table-hover table-inverse">
+      <thead class="bg-light">
+        <tr>
+          <th>ID</th>
+          <th>画像</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th></th>
+          <th></th>
+          <th colspan="6"></th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr>
+          <td style="width:5%;"><%= user.id %></td>
+          <td style="width:10%;">
+             <% if user.image.attached? %>
+               <%= image_tag user.image, size: "100x100"  %>
+             <% else %>
+               <%= image_tag(asset_path('no_image.jpg'), size: "100x100") %>
+             <% end %>
+          </td>
+          <td style="width:20%;"><%= user.name %></td>
+          <td style="width:20%;"><%= user.email %></td>
+          <td style="width:10%;"><%= link_to '詳細', admin_user_path(user.id) %></td>
+          <td style="width:10%;"><%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %></td> 
+        </tr>
+      </tbody>
+    </table>
   <% end %>
-</ul>
 
-<div class="Page navigation">
-  <%= paginate @users %>
+
+  <div class="Page navigation">
+    <%= paginate @users %>
+  </div>
+  
 </div>
-
-<ul>
-  <%= link_to 'ゲーム一覧へ', admin_game_dashboards_path %> <br>
-  <%= link_to '詳細一覧へ', admin_detail_dashboards_path %> <br>
-  <%= link_to 'コメント一覧へ', admin_comment_dashboards_path %> 
-</ul>

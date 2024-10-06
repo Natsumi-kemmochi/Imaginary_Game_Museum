@@ -1,4 +1,5 @@
 <h1>全ゲーム一覧</h1>
+<%= render 'admin/shared/dashboards' %>
 <ul>
   <% @games.each do |game| %>
     <li>
@@ -15,8 +16,3 @@
   <%= paginate @games %>
 </div>
 
-<ul>
-  <%= link_to 'ユーザー一覧へ', admin_dashboards_path %> <br>
-  <%= link_to '詳細一覧へ', admin_detail_dashboards_path %> <br>
-  <%= link_to 'コメント一覧へ', admin_comment_dashboards_path %> 
-</ul>
