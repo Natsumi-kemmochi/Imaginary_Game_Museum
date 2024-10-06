@@ -1,5 +1,11 @@
 class Admin::UsersController < ApplicationController
+  layout 'admin'
   before_action :authenticate_admin!
+  def show
+    @user = User.find(params[:id])  
+    @games = @user.games.page(params[:page]).order(created_at: :desc)
+  end
+  
   def destroy
     @user = User.find(params[:id])
     @user.destroy
