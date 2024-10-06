@@ -9,6 +9,10 @@
   <% end %>
 </ul>
 
+<div class="Page navigation">
+  <%= paginate @users %>
+</div>
+
 <ul>
   <%= link_to 'ゲーム一覧へ', admin_game_dashboards_path %> <br>
   <%= link_to '詳細一覧へ', admin_detail_dashboards_path %> <br>

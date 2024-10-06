@@ -1,4 +1,4 @@
-class DetailsController < ApplicationController
+class Public::DetailsController < ApplicationController
   
   before_action :is_matching_login_user, only: [:new, :create, :edit, :update, :destroy]
   

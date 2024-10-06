@@ -16,17 +16,19 @@ Rails.application.routes.draw do
     resources :comments, only: [:destroy]
   end
   
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "homes#top"
-  resources :users, only: [:show, :edit,:update, :destroy]
+  scope module: :public do
+    devise_for :users
+    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+    root to: "homes#top"
+    resources :users, only: [:show, :edit,:update, :destroy]
   
-  #ネスト
-  resources :games do
-    resources :details, only: [:new, :create, :show, :edit, :update, :destroy]
-    resources :game_comments, only: [:create, :destroy, :index]
+    #ネスト
+    resources :games do
+      resources :details, only: [:new, :create, :show, :edit, :update, :destroy]
+      resources :game_comments, only: [:create, :destroy, :index]
+    end
+    get "search" => "searches#search"
   end
   
-  get "search" => "searches#search"
   
 end

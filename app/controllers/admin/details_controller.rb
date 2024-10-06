@@ -1,5 +1,4 @@
 class Admin::DetailsController < ApplicationController
-    before_action :authenticate_admin!
     def destroy
         @detail = Detail.find(params[:id])
         @detail.destroy
