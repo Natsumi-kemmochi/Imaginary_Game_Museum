@@ -3,7 +3,8 @@ class Detail < ApplicationRecord
   has_one_attached :image
   belongs_to :game
   validates :image,  attached: true, content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、JPG/JPEG/PNG/GIFのみアップロード可能です。' }
-  validates :sub_text, length: { maximum: 800 }
+  validates :caption, length: { maximum: 50 }, presence: true
+  validates :sub_text, length: { maximum: 400 }
   
   paginates_per 4
   
