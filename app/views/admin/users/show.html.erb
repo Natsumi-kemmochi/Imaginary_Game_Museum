@@ -1,4 +1,6 @@
-<h1>ユーザー管理</h1>
+<div class="container mb-5">
+  <%= render 'admin/shared/dashboards' %>
+  <h1>ユーザー管理</h1>
   <div>
     <% if @user.image.attached? %>
       <%= image_tag @user.image, size: "100x100"  %>
@@ -17,22 +19,41 @@
 <br><br>
 
 <p>ユーザーの投稿一覧</p>
-<% @games.each do |game| %>
-  <div class="m-2 p-2 d-flex" style="width:330px;height:250px">
-    <%= image_tag game.image, class: "align-items-center justify-content-center", style: "width: 320px; height: 240px;" %>
-  </div>
-  <h4 class="mt-1"><strong><%= game.title %></strong></h4>
-  <h6 class="mt-2"><span><strong><%= game.caption %></strong></span></h6>
-  <h6 class="mt-1 lh-lg"><span><%= test_method(game.main_text) %></span></h6>
-  <h6 class="mt-3 text-muted text-right"><span>コメント(<%= game.game_comments.count %>)</span></h6>
-  <h6 class="text-muted text-right"><span>最終更新　<%= game.updated_at&.strftime("%Y年 %m月 %d日 %H時 %M分") %></span></h6>
-<% end %>
-
-<div class="Page navigation justify-content-center mt-3 pb-3">
+  <% @games.each do |game| %>
+    <table class="table table-hover table-inverse">
+      <thead class="bg-light">
+        <tr>
+          <th>ID</th>
+          <th>Image</th>
+          <th>Title</th>
+          <th>User</th>
+          <th>Caption&Text</th>
+          <th></th>
+          <th colspan="6"></th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr>
+          <td style="width:5%;"><%= game.id %></td>
+          <td style="width:15%;">  
+            <%= image_tag game.image, class: "align-items-center justify-content-center", style: "width: 140px; height: 100px;" %>
+          </td>
+          <td style="width:15%;"><%= game.title %></td>
+          <td style="width:15%;"><%= game.user.name %></td>
+          <td style="width:40%;">
+            <p><%= game.caption %></p>---<%= game.main_text %>
+          </td>
+          <td style="width:10%;">
+            <%= link_to '削除', admin_game_path(game), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
+          </td>
+        </tr>
+      </tbody>
+    </table>  
+  <% end %>
+  <div class="Page navigation justify-content-center mt-3 pb-3">
     <%= paginate @games %>
-</div>
+  </div>
 
-<%= link_to 'ユーザー一覧へ', admin_dashboards_path %>
 </div>
  
 

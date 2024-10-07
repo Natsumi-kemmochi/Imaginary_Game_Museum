@@ -24,7 +24,8 @@
           <td style="width:15%;"><%= game.title %></td>
           <td style="width:15%;"><%= game.user.name %></td>
           <td style="width:40%;">
-            <p><%= game.caption %></p>---<%= game.main_text %></td>
+            <p><%= game.caption %></p>---<%= game.main_text %>
+          </td>
           <td style="width:10%;">
             <%= link_to '削除', admin_game_path(game), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
           </td>
