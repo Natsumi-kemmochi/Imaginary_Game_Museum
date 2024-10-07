@@ -1,18 +1,41 @@
-<h1>全ゲーム一覧</h1>
-<%= render 'admin/shared/dashboards' %>
-<ul>
+<div class="container mb-5">
+  <%= render 'admin/shared/dashboards' %>
+  <h1>全ゲーム一覧</h1>
+  
   <% @games.each do |game| %>
-    <li>
-      <%= image_tag game.image, class: "align-items-center justify-content-center", style: "width: 320px; height: 240px;" %>
-      <%= game.title %>
-      <p><%= game.main_text %></p>
-      <!-- リンクを追加 -->
-      <%= link_to '削除', admin_game_path(game), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
-    </li>
+    <table class="table table-hover table-inverse">
+      <thead class="bg-light">
+        <tr>
+          <th>ID</th>
+          <th>Image</th>
+          <th>Title</th>
+          <th>User</th>
+          <th>Caption&Text</th>
+          <th></th>
+          <th colspan="6"></th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr>
+          <td style="width:5%;"><%= game.id %></td>
+          <td style="width:15%;">  
+            <%= image_tag game.image, class: "align-items-center justify-content-center", style: "width: 140px; height: 100px;" %>
+          </td>
+          <td style="width:15%;"><%= game.title %></td>
+          <td style="width:15%;"><%= game.user.name %></td>
+          <td style="width:40%;">
+            <p><%= game.caption %></p>---<%= game.main_text %></td>
+          <td style="width:10%;">
+            <%= link_to '削除', admin_game_path(game), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
+          </td>
+        </tr>
+      </tbody>
+    </table>  
   <% end %>
-</ul>
 
-<div class="Page navigation">
-  <%= paginate @games %>
+
+  <div class="Page navigation">
+    <%= paginate @games %>
+  </div>
+
 </div>
-

@@ -7,10 +7,10 @@
       <thead class="bg-light">
         <tr>
           <th>ID</th>
-          <th>画像</th>
+          <th>Image</th>
           <th>Name</th>
           <th>Email</th>
-          <th></th>
+          <th>Introduction</th>
           <th></th>
           <th colspan="6"></th>
         </tr>
@@ -19,15 +19,17 @@
         <tr>
           <td style="width:5%;"><%= user.id %></td>
           <td style="width:10%;">
+            <%= link_to admin_user_path(user.id) do %>
              <% if user.image.attached? %>
                <%= image_tag user.image, size: "100x100"  %>
              <% else %>
                <%= image_tag(asset_path('no_image.jpg'), size: "100x100") %>
              <% end %>
+            <% end %>
           </td>
           <td style="width:20%;"><%= user.name %></td>
           <td style="width:20%;"><%= user.email %></td>
-          <td style="width:10%;"><%= link_to '詳細', admin_user_path(user.id) %></td>
+          <td style="width:30%;"><%= user.introduction %></td>
           <td style="width:10%;"><%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %></td> 
         </tr>
       </tbody>
@@ -39,4 +41,3 @@
     <%= paginate @users %>
   </div>
   
-</div>
