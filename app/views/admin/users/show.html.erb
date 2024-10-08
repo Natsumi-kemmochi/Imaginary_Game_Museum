@@ -1,6 +1,6 @@
 <div class="container mb-5">
   <%= render 'admin/shared/dashboards' %>
-  <h1>ユーザー管理</h1>
+  <h1>ユーザー詳細</h1>
   <div>
     <% if @user.image.attached? %>
       <%= image_tag @user.image, size: "100x100"  %>
@@ -14,7 +14,7 @@
     <h5><strong><%= @user.name %></strong></h5>
     <h6><%= @user.introduction %></h6>
      <%= link_to edit_admin_user_path(@user), data: {"turbolinks" => false} do %>
-       ユーザー情報変更</i>
+       ユーザー情報編集</i>
      <% end %>
      --------<%= link_to 'このユーザーを削除', admin_user_path(@user), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
   </div>

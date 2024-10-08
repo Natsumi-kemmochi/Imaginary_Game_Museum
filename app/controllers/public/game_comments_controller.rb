@@ -8,7 +8,7 @@ class Public::GameCommentsController < ApplicationController
       redirect_to game_game_comments_path(@game.id)
     else
       @details = @game.details.page(params[:page])
-      render "games/show"
+      render "public/games/show"
     end
   end
   
