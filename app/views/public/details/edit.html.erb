@@ -27,6 +27,11 @@
           </div>
           <br>
           <div>
+            <h6>見出し（必須：50字まで）</h6>
+              <%= f.text_area :caption, class: "form-control" %>
+          </div>
+          <br>
+          <div>
             <h6>自由記述欄（400字まで）</h6>
             <%# 800字以上でNoMethodError %>
             <%= f.text_area :sub_text, class: "form-control", rows: 5 %>

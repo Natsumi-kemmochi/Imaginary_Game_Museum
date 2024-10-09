@@ -54,7 +54,7 @@ class Public::DetailsController < ApplicationController
    private
    
    def detail_params
-     params.require(:detail).permit(:sub_text, :image)
+     params.require(:detail).permit(:caption, :sub_text, :image)
    end
    
    def is_matching_login_user
