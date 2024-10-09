@@ -197,5 +197,7 @@ GameComment.find_or_create_by!(id: "11") do |game_comment|
 end
 
 
+Admin.create(email: 'admin@example.com', 
+             password: '123456')
 
 puts "seedの実行が完了しました"
