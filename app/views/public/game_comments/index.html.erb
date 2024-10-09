@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="p-3 justify-content-center d-flex">
+    <%= image_tag(@game.image, class: "img-fluid pr-3 pl-3") %>
+  </div>
+  <div class="justify-content-center">
+    <h4 class="text-light text-center"><strong><%= @game.title %></strong></h4>
+    <p class ="text-light text-center pt-3">投稿コメント一覧　※これらは幻覚である可能性が非常に高いです！</p> 
+    <!-- form_withとdivが入れ替わると再リロードが必要 --> 
+   <%= form_with model: [@game, @game_comment] do |f| %>
+    <div class="row justify-content-center">
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く(400字まで)", class: "form-control", style: "width:70%"  %>
+    </div>
+　  <!-- ここまで --> 
+    <div class="row mt-2 pb-5 justify-content-center">
+      <%= f.submit "送信する" %>
+    </div>
+    <% end %>
+  <div class ="comment_index">
+    <% @game.game_comments.each do |game_comment| %>
+      <div class="pt-3 pt-2 pl-4 pr-4 pb-1 mb-2 bg-light">
+        <%= link_to game_comment.user.name, user_path(game_comment.user) %>
+        <p class ="mt-2"><%= game_comment.comment %><p>
+        <p class ="text-right mt-2 text-muted"><%= game_comment.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %>
+          <% if game_comment.user == current_user %>
+            <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete, data: { confirm: "コメントを削除しますか？" }, class: 'btn btn-light btn-outline-dark' %>
+          <%# elsif @game.user == current_user %>
+            <%# link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete, data: { confirm: "コメントを削除しますか？" }, class: 'btn btn-light btn-outline-dark' %>
+          <% end %>
+        <p>
+      </div>
+      <% end %>
+  
+  <div class="row justify-content-center mt-5 pb-5">
+    <%= link_to "ゲームページへ", game_path(@game) %>
+  </div>  
+    
+  <div class="row mt-3 p-2 justify-content-center">
+    <%= paginate @game_comments %>
+  </div>
+
+  </div>
+</div>  

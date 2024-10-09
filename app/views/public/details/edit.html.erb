@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 col-sm-12 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5 bg-light">
+      <h5 class="text-dark bg-light p-4 mb-0">詳細記事の投稿</h5>
+        <div class="form-body p-4">
+          <!-- エラーメッセージ -->
+          <% if @detail.errors.any? %>
+           <ul class="alert alert-danger" role="alert">
+             <h6 class="alert-heading">
+               <%= @detail.errors.count %>件のエラーが発生しました
+             </h6>
+             <% @detail.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+             <% end %>
+           </ul>
+          <% end %>          
+           
+           
+          <%= form_with model: [@game, @detail], local: true do |f| %>
+          <div>
+            <%= image_tag @detail.image, class: "w-100" %>
+          </div>
+          <br>
+          <div>
+            <h6>ビジュアル</h6>
+            <%= f.file_field :image, accept: "image/*", class: "w-100" %>
+          </div>
+          <br>
+          <div>
+            <h6>見出し（必須：50字まで）</h6>
+              <%= f.text_area :caption, class: "form-control" %>
+          </div>
+          <br>
+          <div>
+            <h6>自由記述欄（400字まで）</h6>
+            <%# 800字以上でNoMethodError %>
+            <%= f.text_area :sub_text, class: "form-control", rows: 5 %>
+          </div>
+          <hr>
+          <%= f.submit '保存' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="shadow-lg rounded px-0 my-5">
+      <%= link_to game_detail_path(@detail.game_id, @detail.id), method: :delete, data: { confirm: "この操作は取り消せません。本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
+        この記事を削除
+      <% end %>
+    </div>
+  </div>
+</div>
+

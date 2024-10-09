@@ -1,0 +1,36 @@
+<div class="container mb-5">
+  <%= render 'admin/shared/dashboards' %>
+  <h1>全コメント一覧</h1>
+
+  <% @game_comments.each do |game_comment| %>
+    <table class="table table-hover table-inverse">
+      <thead class="bg-light">
+        <tr>
+          <th>ID</th>
+          <th>Comment</th>
+          <th>Game</th>
+          <th>User</th>
+          <th></th>
+          <th colspan="5"></th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr>
+          <td style="width:5%;"><%= game_comment.id %></td>
+          <td style="width:50%;"><%= game_comment.comment %></td>
+          <td style="width:15%;"><%= game_comment.game.title %></td>
+          <td style="width:15%;"><%= game_comment.user.name %></td>
+          <td style="width:10%;">
+           <%= link_to '削除', admin_comment_path(game_comment), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+
+
+  <div class="Page navigation">
+    <%= paginate @game_comments %>
+  </div>
+
+</div>

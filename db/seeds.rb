@@ -95,31 +95,32 @@ end
 
 Detail.find_or_create_by!(id: "1") do |detail|
   detail.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1-1.png"), filename:"sample-post1-1.png")
-  detail.sub_text = "これを入手した経緯は？"
+  detail.caption = "これを入手した経緯は？"
+  detail.sub_text = "皆さんでアイディアを出してください"
   detail.game_id = 1
 end
 
 Detail.find_or_create_by!(id: "2") do |detail|
   detail.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1-2.png"), filename:"sample-post1-2.png")
-  detail.sub_text = "頼れる仲間たち"
+  detail.caption = "頼れる仲間たち"
   detail.game_id = 1
 end
 
 Detail.find_or_create_by!(id: "3") do |detail|
   detail.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1-3.png"), filename:"sample-post1-3.png")
-  detail.sub_text = "このモンスターを　⇒倒す？／⇒仲間にする"
+  detail.caption = "このモンスターを　⇒倒す？／⇒仲間にする"
   detail.game_id = 1
 end
 
 Detail.find_or_create_by!(id: "4") do |detail|
   detail.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1-4.png"), filename:"sample-post1-4.png")
-  detail.sub_text = "どうして魔王はこの世界を支配したいんだろう？"
+  detail.caption = "どうして魔王はこの世界を支配したいんだろう？"
   detail.game_id = 1
 end
 
 Detail.find_or_create_by!(id: "5") do |detail|
   detail.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1-5.png"), filename:"sample-post1-5.png")
-  detail.sub_text = "上位存在の目的とは……"
+  detail.caption = "上位存在の目的とは……"
   detail.game_id = 1
 end
 

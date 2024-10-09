@@ -1,0 +1,77 @@
+<div class="container">
+  <%= render 'public/searches/form' %>
+  <% if notice %>
+    <p class="notice text-light"><%= notice %></p>
+  <% end %>
+  
+  <!-- エラーメッセージ -->
+    <% if @game_comment.errors.any? %>
+      <ul class="alert alert-danger" role="alert">
+        コメントは1~400字以内に収めてください
+      </ul>
+    <% end %>
+  <!-- ここまで -->
+  
+  <div class="bg-light">
+  <div class="row p-3 justify-content-center d-flex">
+    <%= image_tag(@game.image, class: "img-fluid pr-3 pl-3") %>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <p class="text-right pr-3">投稿者：<%= link_to @game.user.name, @game.user %></p>
+      <h4 class="text-center"><strong><%= @game.title %></strong></h4>
+      <p class="mt-3 text-center"><strong><%= @game.caption %></strong></p>
+      <p class="p-3 text-center"><%= @game.main_text %></p>
+      <p class="text-muted text-center">最終更新　<%= @game.updated_at&.strftime("%Y年%m月%d日%H時%M分") %></p>
+    </div>
+  </div>
+  
+  <% if @game.user == current_user %>
+    <div class="row p-3 justify-content-center"> 
+      <div class="shadow rounded mr-5">
+         <%= link_to edit_game_path(@game), class: "btn btn-light btn-outline-dark" do %>
+            ゲーム情報変更</i>
+         <% end %>
+      </div>
+      <div class="shadow rounded">
+         <%= link_to new_game_detail_path(@game), class: 'btn btn-light btn-outline-dark' do %>
+           詳細情報の投稿</li>
+         <% end %>
+      </div>
+    </div>     
+  <% end %>
+  
+  <div class="row mb-3 justify-content-center">
+    <%= link_to "コメント(#{@game.game_comments.count})", game_game_comments_path(@game.id) %>
+  </div>
+  <!-- form_withとdivが入れ替わると再リロードが必要 --> 
+   <%= form_with model: [@game, @game_comment] do |f| %>
+    <div class="row justify-content-center">
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントを書く(400字まで)", class: "form-control", style: "width:50%"  %>
+    </div>
+  <!-- ここまで --> 
+    <div class="row mt-5 pb-5 justify-content-center">
+      <%= f.submit "送信する" %>
+    </div>
+    <% end %>
+  
+  <% if @details.any? %>
+  <p class="text-center mt-5"><strong>もっと見る</strong></p>
+    <div class="row mt-3 p-2 justify-content-center d-flex">
+      <% @details.each do |detail| %>
+        <div class="border m-2 p-2 d-flex" style="width:210px;height:210px">
+          <%= link_to game_detail_path(detail.game_id, detail.id) do %>
+            <%= image_tag detail.get_image(200,200), class: "align-items-center justify-content-center" %>
+           <% end %>
+        </div>
+        <%# detail.caption %>
+       <% end %>
+       <% else %>
+      <%# 詳細が投稿されていない場合何も表示しない　%>
+   <% end %>
+  </div>
+  <div class="row mt-3 p-2 justify-content-center">
+    <%= paginate @details %>
+  </div>
+  </div>
+</div>

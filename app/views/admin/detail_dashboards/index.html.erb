@@ -1,0 +1,40 @@
+<div class="container mb-5">
+  <%= render 'admin/shared/dashboards' %>
+  <h1>全詳細一覧</h1>
+ 
+  <% @details.each do |detail| %>
+      <table class="table table-hover table-inverse">
+      <thead class="bg-light">
+        <tr>
+          <th>ID</th>
+          <th>Image</th>
+          <th>Game</th>
+          <th>Caption&Text</th>
+          <th>Text</th>
+          <th></th>
+          <th colspan="6"></th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr>
+          <td style="width:5%;"><%= detail.id %></td>
+          <td style="width:10%;">
+            <%= image_tag detail.get_image(100,100) %>
+          </td>
+          <td style="width:15%;"><%= detail.game.title %></td>
+          <td style="width:20%;"><%= detail.caption %></td>
+          <td style="width:40%;"><%= detail.sub_text %></td>
+          <td style="width:10%;">
+            <%= link_to '削除', admin_detail_path(detail), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
+          </td>
+        </tr>
+      </tbody>
+    </table>  
+  <% end %>
+
+
+  <div class="Page navigation">
+    <%= paginate @details %>
+  </div>
+
+</div>

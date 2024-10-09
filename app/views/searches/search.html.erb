@@ -1,9 +1,0 @@
-<div class="container">
-  <%= render 'searches/form' %>
-  <p class="text-light">"<%= @word %>"の検索結果一覧</p>
-  <% if @range == 'User' %>
-     <%= render 'users/list', users: @users %>
-  <% else @range == 'Game' %>
-     <%= render 'games/list', games: @games %>
-  <% end %>
-</div>
