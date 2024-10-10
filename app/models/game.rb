@@ -3,7 +3,12 @@ class Game < ApplicationRecord
   has_one_attached :image
   has_many :details, dependent: :destroy
   has_many :game_comments, -> { newest_first }, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   belongs_to :user
+  
+  def bookmarked_by?(user)
+    bookmarks.exists?(user_id: user.id)
+  end
   
   validates :title, length: { maximum: 30 }, presence: true
   validates :caption, length: { maximum: 50 }, presence: true

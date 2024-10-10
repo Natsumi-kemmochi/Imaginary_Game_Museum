@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :games do
       resources :details, only: [:new, :create, :show, :edit, :update, :destroy]
       resources :game_comments, only: [:create, :destroy, :index]
+      resource :bookmark, only: [:create, :destroy]
     end
     get "search" => "searches#search"
   end
