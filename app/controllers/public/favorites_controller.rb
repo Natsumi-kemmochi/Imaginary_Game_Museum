@@ -4,13 +4,13 @@ class Public::FavoritesController < ApplicationController
     game_comment = GameComment.find(params[:game_comment_id])
     favorite = current_user.favorites.new(game_comment_id: game_comment.id)
     favorite.save
-    redirect_back fallback_location: root_path
+    redirect_to request.referer
   end
 
   def destroy
      game_comment = GameComment.find(params[:game_comment_id])
      favorite = current_user.favorites.find_by(game_comment_id: game_comment.id)
      favorite.destroy
-     redirect_back fallback_location: root_path
+     redirect_to request.refererS
   end
 end
