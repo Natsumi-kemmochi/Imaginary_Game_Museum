@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :games, dependent: :destroy
   has_many :game_comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_one_attached :image
   
   validates :name, length: { maximum: 15 }, presence: true

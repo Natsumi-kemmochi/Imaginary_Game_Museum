@@ -30,6 +30,10 @@ Rails.application.routes.draw do
       resource :bookmark, only: [:create, :destroy]
     end
     
+    resources :game_comment do
+      resource :favorite, only: [:create, :destroy]
+    end
+    
     get "search" => "searches#search"
     
     
