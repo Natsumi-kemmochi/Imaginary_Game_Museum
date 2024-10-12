@@ -43,6 +43,17 @@
   
   <div class="row mb-3 justify-content-center">
     <%= link_to "コメント(#{@game.game_comments.count})", game_game_comments_path(@game.id) %>
+      <%# ブックマーク %>
+      <% if @game.bookmarked_by?(current_user) %>
+        <%= link_to game_bookmark_path(@game), method: :delete do %>
+          ♥ <%= @game.bookmarks.count %> 
+      <% end %>
+      <% else %>
+        <%= link_to game_bookmark_path(@game), method: :post do %>
+          ♡ <%= @game.bookmarks.count %> 
+        <% end %>
+      <% end %>
+      <%# ここまで %>     
   </div>
   <!-- form_withとdivが入れ替わると再リロードが必要 --> 
    <%= form_with model: [@game, @game_comment] do |f| %>
