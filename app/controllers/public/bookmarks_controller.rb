@@ -8,7 +8,8 @@ class Public::BookmarksController < ApplicationController
   end
 
   def index
-    @games = current_user.games.page(params[:page]).order(created_at: :desc)
+    games = current_user.bookmarks.order(created_at: :desc).map(&:game)
+    @games = Kaminari.paginate_array(games).page(params[:page])
   end
 
   def destroy
@@ -19,3 +20,4 @@ class Public::BookmarksController < ApplicationController
   end
 
 end
+
