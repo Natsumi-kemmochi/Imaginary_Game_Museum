@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_one_attached :image
   
+  #has_many :relationships  
   # 自分がフォローする側の関係性  
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   # フォローしているユーザーを取得
@@ -20,7 +21,7 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
    # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
-  
+
   
   validates :name, length: { maximum: 15 }, presence: true
   validates :email, uniqueness: true
@@ -49,5 +50,7 @@ class User < ApplicationRecord
       @user = User.all
     end
   end
+  
+  paginates_per 10
   
 end
