@@ -32,7 +32,7 @@ class Public::UsersController < ApplicationController
   end
   
   
-  
+  # ストロングパラメータ
   private
   
   def user_params

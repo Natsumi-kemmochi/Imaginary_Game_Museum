@@ -49,7 +49,7 @@ class Public::GamesController < ApplicationController
 
   
   # ストロングパラメータ
-   private
+  private
    
   def game_params
     params.require(:game).permit(:title, :caption, :main_text, :image)

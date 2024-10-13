@@ -38,7 +38,12 @@
        </div>
        <div class="icon mt-3 mb-2">
          <a href="<%= user_followings_path(current_user.id) %>">
-           <i class="fa-solid fa-user">お気に入りユーザー</i>
+           <i class="fa-solid fa-user">フォロー中のユーザー</i>
+         </a>
+       </div>
+       <div class="icon mt-3 mb-2">
+         <a href="<%= user_followers_path(current_user.id) %>">
+           <i class="fa-solid fa-user">あなたをフォローしているユーザー</i>
          </a>
        </div>
        <% end %>
