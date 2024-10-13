@@ -16,12 +16,12 @@ class Public::RelationshipsController < ApplicationController
   
   def followings
     user = User.find(params[:user_id])
-  	@users = user.followings.joins(:passive_relationships).order('relationships.created_at DESC').page(params[:page])
+  	@users = user.followings.joins(:passive_relationships).order('relationships.created_at DESC').distinct.page(params[:page])
   end
 
   def followers
     user = User.find(params[:user_id])
-  	@users = user.followers.joins(:active_relationships).order('relationships.created_at DESC').page(params[:page])
+  	@users = user.followers.joins(:active_relationships).order('relationships.created_at DESC').distinct.page(params[:page])
   end
 
   # ストロングパラメータ
