@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])  
     @games = @user.games.page(params[:page]).order(created_at: :desc)
+    @followees_games = Game.where(user_id: [*current_user.following_ids])
   end
 
   def edit

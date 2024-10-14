@@ -57,9 +57,16 @@
        <% end %>
      </div>
   </div>
-<br><br>
+  <br><br>
 
-<p class="text-light">ユーザーの投稿一覧</p>
-  <%#共通テンプレート %>
+  <p class="text-light">このユーザーの投稿一覧</p>
   <%= render 'public/games/list', games: @games %>
+  
+  <% if @user == current_user %>
+  <p class="text-light">フォローユーザーの投稿一覧</p>
+    <%= render 'public/relationships/list', games: @games %>
+  <% end %>
+  
+  
 </div>
+
