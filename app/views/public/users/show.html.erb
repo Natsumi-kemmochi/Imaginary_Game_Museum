@@ -64,7 +64,7 @@
   
   <% if @user == current_user %>
   <p class="text-light">フォローユーザーの投稿一覧</p>
-    <%= render 'public/relationships/list', games: @games %>
+    <%= render 'public/relationships/list', followees_games: @followees_games %>
   <% end %>
   
   
