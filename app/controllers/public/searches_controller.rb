@@ -1,6 +1,5 @@
 class Public::SearchesController < ApplicationController
   before_action :authenticate_user!
-    #Imaginary_Game_Museum
 	def search
 	   @range = params[:range]
 	   @word = params[:word]
@@ -11,4 +10,12 @@ class Public::SearchesController < ApplicationController
 		 @users = User.looks(params[:search], params[:word]).page(params[:page])
        end
 	end
+    
+    def tag_search
+      @model = Game
+      @word = params[:content]
+      @games = Game.where("tag LIKE?","%#{@word}%")
+      render 
+    end
+    
 end
