@@ -5,6 +5,4 @@ class Bookmark < ApplicationRecord
   
   validates :user_id, uniqueness: {scope: :game_id}
 
-  paginates_per 10
-
 end

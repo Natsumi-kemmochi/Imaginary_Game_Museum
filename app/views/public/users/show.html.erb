@@ -32,22 +32,41 @@
        <%# ログインユーザーのとき %>
        <% if @user == current_user %>
        <div class="icon mt-3">
-         <a href="<%= root_path %>">
+         <a href="<%= user_bookmarks_path(current_user.id) %>">
            <i class="fa-solid fa-book">ブックマーク</i>
          </a>
        </div>
        <div class="icon mt-3 mb-2">
-         <a href="<%= root_path %>">
-           <i class="fa-solid fa-user">お気に入りユーザー</i>
+         <a href="<%= user_followings_path(current_user.id) %>">
+           <i class="fa-solid fa-user">フォロー中のユーザー</i>
+         </a>
+       </div>
+       <div class="icon mt-3 mb-2">
+         <a href="<%= user_followers_path(current_user.id) %>">
+           <i class="fa-solid fa-user">あなたをフォローしているユーザー</i>
          </a>
        </div>
        <% end %>
        <%# ここまで %>
+       <% if current_user != @user %>
+         <% if current_user.following?(@user) %>
+           <%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete, class: "btn btn-info" %>
+         <% else %>
+           <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+         <% end %>
+       <% end %>
      </div>
   </div>
-<br><br>
+  <br><br>
 
-<p class="text-light">ユーザーの投稿一覧</p>
-  <%#共通テンプレート %>
+  <p class="text-light">このユーザーの投稿一覧</p>
   <%= render 'public/games/list', games: @games %>
+  
+  <% if @user == current_user %>
+  <p class="text-light">フォローユーザーの投稿一覧</p>
+    <%= render 'public/relationships/list', followees_games: @followees_games %>
+  <% end %>
+  
+  
 </div>
+

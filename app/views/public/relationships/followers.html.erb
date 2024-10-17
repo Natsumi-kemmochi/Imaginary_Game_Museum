@@ -1,0 +1,9 @@
+<div class="container">
+  <%= render 'public/searches/form' %>
+  <h2 class="text-light">あなたをフォローしているユーザー</h2>
+  <% if @users.exists? %>
+    <%= render "public/users/list", users: @users %>
+  <% else %>
+    <p class="text-light pb-3">ユーザーはいません</p>
+  <% end %>
+ </div>
