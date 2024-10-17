@@ -196,7 +196,35 @@ GameComment.find_or_create_by!(id: "11") do |game_comment|
   game_comment.game_id = "1"
 end
 
+# -------ブックマーク---------------
+Bookmark.find_or_create_by!(id: "1") do |bookmark|
+  bookmark.user_id = "1"
+  bookmark.game_id = "2"
+end
+Bookmark.find_or_create_by!(id: "2") do |bookmark|
+  bookmark.user_id = "1"
+  bookmark.game_id = "3"
+end
 
+# -------いいね---------------
+Favorite.find_or_create_by!(id: "1") do |favorite|
+  favorite.user_id = "1"
+  favorite.game_comment_id = "1"
+end
+
+# -------フォロー---------------
+Relationship.find_or_create_by!(id: "2") do |relationship|
+  relationship.follower_id = "1"
+  relationship.followed_id = "2"
+end
+
+Relationship.find_or_create_by!(id: "3") do |relationship|
+  relationship.follower_id = "1"
+  relationship.followed_id = "3"
+end
+
+
+# -------管理者---------------
 Admin.create(email: 'admin@example.com', 
              password: '123456')
 
