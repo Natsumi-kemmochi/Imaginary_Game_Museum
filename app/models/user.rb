@@ -14,6 +14,14 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_one_attached :image
   
+  def get_profile_image(width, height)
+   unless image.attached?
+     file_path = Rails.root.join('app/assets/images/no_image.jpg')
+     image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
+   end
+   image.variant(resize_to_limit: [width, height]).processed
+  end
+  
   has_many :relationships  
   # 自分がフォローする側の関係性  
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -54,5 +62,5 @@ class User < ApplicationRecord
   end
   
   paginates_per 10
-  
+
 end
