@@ -16,6 +16,8 @@ class Game < ApplicationRecord
   validates :image,  attached: true, content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、JPG/JPEG/PNG/GIFのみアップロード可能です。' }
   validates :tag, length: { maximum: 40 }, presence: true
 
+  #scope :newest_first, -> { order(created_at: :desc) }
+
   paginates_per 10
 
   def self.looks(search, word)
