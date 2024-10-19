@@ -35,6 +35,11 @@
           </div>
           <br>
           <div>
+            <h6>タグ（必須、40字まで）</h6>
+              <%= f.text_field :tag,class: 'form-control game_tag' %>
+          </div>
+          <br>
+          <div>
             <h6>自由記述欄（400字まで）</h6>
             <%= f.text_area :main_text, class: "form-control", rows: 5 %>
           </div>

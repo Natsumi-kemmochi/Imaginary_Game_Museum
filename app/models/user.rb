@@ -9,10 +9,12 @@ class User < ApplicationRecord
   has_many :games, dependent: :destroy
   has_many :game_comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  #has_many :game_bookmarks, through: :bookmarks
+  
   has_many :favorites, dependent: :destroy
   has_one_attached :image
   
-  #has_many :relationships  
+  has_many :relationships  
   # 自分がフォローする側の関係性  
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   # フォローしているユーザーを取得

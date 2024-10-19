@@ -7,6 +7,11 @@
       <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
       <%= f.submit '検索' %>
     <% end %>
+    
+    <%= form_with url: tagsearches_search_path,method: :get, local: true do |f| %>
+      <%= f.text_field :content %>
+      <%= f.submit'タグ検索' %>
+    <% end %>
   </div>
  </div>
 <% end %>
