@@ -14,11 +14,11 @@
     <% end %>
     
     <div>
-      <%= link_to '新しい順', games_path(latest: "true") %>
-      |<%= link_to '古い順', games_path(old: "true") %>
-      |<%= link_to 'ブックマークの多い順', games_path(bookmark_count: "true") %>
-      |<%= link_to '詳細の多い順', games_path(detail_count: "true") %>
-      |<%= link_to 'コメントの多い順', games_path(comment_count: "true") %>
+      <%= link_to '新しい順', games_path(latest: "true"), class: 'text-light' %>
+      |<%= link_to '古い順', games_path(old: "true"), class: 'text-light' %>
+      |<%= link_to 'ブックマークの多い順', games_path(bookmark_count: "true"), class: 'text-light' %>
+      |<%= link_to '詳細の多い順', games_path(detail_count: "true"), class: 'text-light' %>
+      |<%= link_to 'コメントの多い順', games_path(comment_count: "true"), class: 'text-light' %>
     </div>
     
   </div>
