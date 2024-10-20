@@ -28,6 +28,11 @@
        <% end %>
       </p>
       <h4 class="text-center"><strong><%= @game.title %></strong></h4>
+      <p class="mt-3 text-center">
+        <% if @game.tag.present? %>
+          <%=link_to @game.tag,tagsearches_search_path(content:@game.tag)%>
+　      <% end %>
+　    </p>
       <p class="mt-3 text-center"><strong><%= @game.caption %></strong></p>
       <p class="p-3 text-center"><%= @game.main_text %></p>
       <p class="text-muted text-center">最終更新　<%= @game.updated_at&.strftime("%Y年%m月%d日%H時%M分") %></p>

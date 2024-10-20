@@ -52,7 +52,7 @@ class Public::GamesController < ApplicationController
   private
    
   def game_params
-    params.require(:game).permit(:title, :caption, :main_text, :image)
+    params.require(:game).permit(:title, :caption, :main_text, :image, :tag)
   end
    
   def is_matching_login_user

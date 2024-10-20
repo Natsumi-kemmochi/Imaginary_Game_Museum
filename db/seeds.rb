@@ -98,7 +98,8 @@ Game.find_or_create_by!(id: "6") do |game|
   game.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post5.jpg"), filename:"sample-post5.jpg")
   game.caption = "失われた魔法を取り戻し、妖精たちの国に再び光を"
   game.main_text = "主人公が夢の中で迷い込んだ、儚く美しい妖精たちの世界が舞台。そこは色とりどりの花が咲き乱れ、透き通るような川が流れる幻想的な場所。しかし、妖精たちは何者かに奪われた魔法の宝石によって、その力を失い、国は徐々に色を失っていく。主人公は、妖精たちと共に失われた宝石を探す旅に出る。途中、様々な試練や出会いを通じて、友情や愛の大切さを学びながら、やがて自らの使命に目覚めていく。"
-  game.user_id = 1
+  game.user_id = 5
+  game.tag = "アドベンチャー　ファンタジー"
 end
 
 Game.find_or_create_by!(id: "7") do |game|
@@ -108,6 +109,7 @@ Game.find_or_create_by!(id: "7") do |game|
   game.user_id = 1
   game.tag = "RPG スライム　かわいい　癒し"
 end
+
 
 # ---------詳細記事-------------
 
