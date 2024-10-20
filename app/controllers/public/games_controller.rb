@@ -24,7 +24,19 @@ class Public::GamesController < ApplicationController
   end
 
   def index
-    @games = Game.page(params[:page]).order(created_at: :desc)
+    if params[:latest]
+       @games = Game.page(params[:page]).order(created_at: :desc)
+    elsif params[:old]
+       @games = Game.old.page(params[:page])
+    elsif params[:bookmark_count]
+       @games = Game.bookmark_count.page(params[:page])
+    elsif params[:detail_count]
+       @games = Game.detail_count.page(params[:page])
+    elsif params[:comment_count]
+       @games = Game.comment_count.page(params[:page])
+    else
+       @games = Game.page(params[:page]).order(created_at: :desc)
+    end
   end
 
   def edit

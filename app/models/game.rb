@@ -30,4 +30,10 @@ class Game < ApplicationRecord
     end
   end
   
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :bookmark_count, -> { left_joins(:bookmarks).group(:id).order('COUNT(bookmarks.id) DESC') }
+  scope :detail_count, -> { left_joins(:details).group(:id).order('COUNT(details.id) DESC') }
+  scope :comment_count, -> { left_joins(:game_comments).group(:id).order('COUNT(game_comments.id) DESC') }
+  
 end
