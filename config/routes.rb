@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'dashboards', to: 'dashboards#index'
     resources :users, only: [:show, :edit, :update, :destroy]
     get 'game_dashboards', to: 'game_dashboards#index'
-    resources :games, only: [:destroy]
+    resources :games, only: [:edit, :update, :destroy]
     get 'detail_dashboards', to: 'detail_dashboards#index'
     resources :details, only: [:destroy]
     get 'comment_dashboards', to: 'comment_dashboards#index'
