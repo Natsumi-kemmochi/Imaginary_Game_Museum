@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_17_113321) do
+ActiveRecord::Schema.define(version: 2024_10_21_113226) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -82,6 +82,13 @@ ActiveRecord::Schema.define(version: 2024_10_17_113321) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "game_tags", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "title"
     t.string "caption"
@@ -89,7 +96,6 @@ ActiveRecord::Schema.define(version: 2024_10_17_113321) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "tag"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -98,6 +104,12 @@ ActiveRecord::Schema.define(version: 2024_10_17_113321) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id", "follower_id"], name: "index_relationships_on_followed_id_and_follower_id", unique: true
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
