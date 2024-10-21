@@ -15,12 +15,10 @@ class Game < ApplicationRecord
     old_tags = current_tags - savegame_tags
     # 今回保存されたものと現在の差を新しいタグとする。新しいタグは保存
     new_tags = savegame_tags - current_tags
-		
     # Destroy old taggings:
     old_tags.each do |old_name|
       self.tags.delete Tag.find_by(name:old_name)
     end
-		
     # Create new taggings:
     new_tags.each do |new_name|
       game_tag = Tag.find_or_create_by(name:new_name)

@@ -9,7 +9,9 @@ class Public::GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.user_id = current_user.id
+    tag_list = params[:game][:tag_name].split(',')
     if @game.save
+      @game.save_tags(tag_list)
       redirect_to  game_path(@game.id)
     else
       #9/2投稿失敗時にも入力データが消えないようにしたい
@@ -64,7 +66,7 @@ class Public::GamesController < ApplicationController
   private
    
   def game_params
-    params.require(:game).permit(:title, :caption, :main_text, :image, :tag)
+    params.require(:game).permit(:title, :caption, :main_text, :image)
   end
    
   def is_matching_login_user
@@ -74,5 +76,4 @@ class Public::GamesController < ApplicationController
     end
   end
 
-  
 end
