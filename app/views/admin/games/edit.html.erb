@@ -1,0 +1,60 @@
+<div class="container">
+  <%= render 'admin/shared/dashboards' %>
+  <div class="row">
+    <div class="col-md-7 col-sm-12 mx-2 mx-sm-auto shadow-lg rounded bg-light  px-0 my-5">
+      <h5 class="text-dark p-4 mb-0">ゲーム情報の編集</h5>
+       <div class="form-body p-4">
+       　<!-- エラーメッセージ -->
+         <% if @game.errors.any? %>
+          <ul class="alert alert-danger" role="alert">
+           <h6 class="alert-heading">
+             <%= @game.errors.count %>件のエラーが発生しました
+           </h6>
+           <% @game.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+           <% end %>
+          </ul>
+        <% end %>
+
+        <%= form_with model: @game, url: admin_game_path(@game), local: true do |f| %>
+          <div>
+            <%= image_tag @game.image, class: "w-100" %>
+          </div>
+          <br>
+          <div>
+            <h6>メインビジュアル</h6>
+            <%= f.file_field :image, accept: "image/*", class: "w-100" %>
+          </div>
+          <div>
+            <h6>タイトル(必須、30字まで)</h6>
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+          <br>
+	        <div>
+            <h6>見出し（必須、50字まで）</h6>
+            <%= f.text_area :caption, class: "form-control" %>
+          </div>
+          <br>
+          <div>
+            <h6>タグ（必須、40字まで）</h6>
+              <%= f.text_field :tag,class: 'form-control game_tag' %>
+          </div>
+          <br>
+          <div>
+            <h6>自由記述欄（400字まで）</h6>
+            <%= f.text_area :main_text, class: "form-control", rows: 5 %>
+          </div>
+          <hr>
+          <%= f.submit '保存' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="shadow-lg rounded px-0 my-5 bg-light">
+      <%= link_to admin_game_path(@game.id), method: :delete, data: { confirm: "詳細記事やコメントを含めすべて削除されますが、本当に削除しますか？" }, class: 'btn btn-light btn-outline-dark' do %>
+        この記事を削除
+      <% end %>
+    </div>
+  </div>
+</div>
