@@ -1,4 +1,5 @@
 class  Public::TagsearchesController < ApplicationController
+  
   def search
     @model = Game
     @word = params[:content]
