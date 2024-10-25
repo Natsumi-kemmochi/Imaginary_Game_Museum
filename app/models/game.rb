@@ -8,24 +8,48 @@ class Game < ApplicationRecord
   has_many :tags, through: :game_tags
   belongs_to :user
 
-  def save_tags(savegame_tags)
+  def create_tags(input_tags)
+    input_tags.each do |tag|    # splitで分けたtagをeach文で取得する
+      new_tag = Tag.find_or_create_by(name: tag) # tagモデルに存在していれば、そのtagを使用し、なければ新規登録する
+      tags << new_tag    # 登録するgameのtagに紐づける（中間テーブルにも反映される）
+    end
+  end
+
+   def update_tags(input_tags)
+    registered_tags = tags.pluck(:name) # すでに紐付けれらているタグを配列化する
+    new_tags = input_tags - registered_tags # 追加されたタグ
+    destroy_tags = registered_tags - input_tags # 削除されたタグ
+
+    new_tags.each do |tag| # 新しいタグをモデルに追加
+      new_tag = Tag.find_or_create_by(name: tag)
+      tags << new_tag
+    end
+
+    destroy_tags.each do |tag| # 削除されたタグを中間テーブルから削除
+      tag_id = Tag.find_by(name: tag)
+      destroy_game_tag = GameTag.find_by(tag_id: tag_id, game_id: id)
+      destroy_game_tag.destroy
+    end
+   end
+
+  #def save_tags(savegame_tags)
     # 現在のユーザーの持っているskillを引っ張ってきている
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    #current_tags = self.tags.pluck(:name) unless self.tags.nil?
     # 今bookが持っているタグと今回保存されたものの差をすでにあるタグとする。古いタグは消す。
-    old_tags = current_tags - savegame_tags
+    #old_tags = current_tags - savegame_tags
     # 今回保存されたものと現在の差を新しいタグとする。新しいタグは保存
-    new_tags = savegame_tags - current_tags
+    #new_tags = savegame_tags - current_tags
     # Destroy old taggings:
-    old_tags.each do |old_name|
-      self.tags.delete Tag.find_by(name:old_name)
-    end
+   # old_tags.each do |old_name|
+    #  self.tags.delete Tag.find_by(name:old_name)
+   # end
     # Create new taggings:
-    new_tags.each do |new_name|
-      game_tag = Tag.find_or_create_by(name:new_name)
+   # new_tags.each do |new_name|
+    #  game_tag = Tag.find_or_create_by(name:new_name)
       # 配列に保存
-      self.tags << game_tag
-    end
-  end  
+    #  self.tags << game_tag
+   # end
+ # end  
   
   
   def bookmarked_by?(user)

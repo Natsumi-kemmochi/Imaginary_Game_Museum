@@ -1,8 +1,8 @@
 class Tag < ApplicationRecord
-  has_many :game_tags, dependent: :destroy, foreign_key: 'tag_id'
+  has_many :game_tags, dependent: :destroy
   has_many :games, through: :game_tags
   
-    scope :merge_games, -> (tags){ }
+    #scope :merge_games, -> (tags){ }
 
   def self.search_games_for(search, word)
     

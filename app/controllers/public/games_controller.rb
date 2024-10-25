@@ -9,7 +9,9 @@ class Public::GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.user_id = current_user.id
-    tag_list = params[:game][:tag_name].split(',')
+    input_tags = tag_params
+    @game.create_tags([input_tags])
+    #tag_list = params[:game][:tag_name].split(',')
     if @game.save
       @game.save_tags(tag_list)
       redirect_to  game_path(@game.id)
@@ -47,9 +49,11 @@ class Public::GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
+    input_tags = tag_params
     if  @game.update(game_params)
-        flash[:notice] = "You have updated game successfully."
-        redirect_to  game_path(@game.id)
+      @game.update_tags([input_tags])
+      flash[:notice] = "You have updated game successfully."
+      redirect_to  game_path(@game.id)
     else
       render :edit
     end
@@ -68,6 +72,11 @@ class Public::GamesController < ApplicationController
   def game_params
     params.require(:game).permit(:title, :caption, :main_text, :image)
   end
+
+  def tag_params
+    params.require(:game).permit(:name)[:name].split(',')
+  end
+ 
    
   def is_matching_login_user
     game =  Game.find(params[:id])
