@@ -26,7 +26,7 @@ class Game < ApplicationRecord
 
   #scope :newest_first, -> { order(created_at: :desc) }
 
-  paginates_per 2
+  paginates_per 10
 
   def self.looks(search, word)
     if search == "perfect_match"
@@ -43,7 +43,7 @@ class Game < ApplicationRecord
   scope :bookmark_count, -> { left_joins(:bookmarks).group(:id).order('COUNT(bookmarks.id) DESC') }
   scope :detail_count, -> { left_joins(:details).group(:id).order('COUNT(details.id) DESC') }
   scope :comment_count, -> { left_joins(:game_comments).group(:id).order('COUNT(game_comments.id) DESC') }
-  
+
   private
   
   def tags_insert_name
