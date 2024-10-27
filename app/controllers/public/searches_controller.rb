@@ -9,7 +9,7 @@ class Public::SearchesController < ApplicationController
        elsif @range == "User"
 		    @users = User.looks(params[:search], params[:word]).page(params[:page])
        elsif @range == 'Tag'
-		    @games = Tag.search_games_for(params[:search], params[:word])#.page(params[:page])
+		    @games = Tag.looks(params[:search], params[:word]).page(params[:page])
 	   end
 	end
 
