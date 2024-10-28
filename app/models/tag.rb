@@ -4,13 +4,17 @@ class Tag < ApplicationRecord
   
     #scope :merge_games, -> (tags){ }
 
+  def related_games
+    self.games
+  end
+
   def self.looks(search, word)
     if search == 'perfect_match'
       @games = Game.joins(:tags).where("tags.name LIKE?", "#{word}").distinct
     elsif search == "partial_match"
       @games = Game.joins(:tags).where("tags.name LIKE?", "%#{word}%").distinct
     else
-      @Games = Game.all
+      @games = Game.all
     end
     
     return @games
