@@ -4,6 +4,8 @@ class Tag < ApplicationRecord
   
     #scope :merge_games, -> (tags){ }
 
+  validates :name, length: { maximum: 40 }
+
   def related_games
     self.games
   end

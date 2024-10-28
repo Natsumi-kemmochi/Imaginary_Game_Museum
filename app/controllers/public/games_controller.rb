@@ -9,11 +9,7 @@ class Public::GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.user_id = current_user.id
-    #input_tags = tag_params
-    #@game.create_tags([input_tags])
-    #tag_list = params[:game][:name].split(',')
     if @game.save
-      #@game.save_tags(tag_list)
       redirect_to  game_path(@game.id)
     else
       #9/2投稿失敗時にも入力データが消えないようにしたい
@@ -49,9 +45,7 @@ class Public::GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    #input_tags = tag_params
     if  @game.update(game_params)
-      #@game.update_tags([input_tags])
       flash[:notice] = "You have updated game successfully."
       redirect_to  game_path(@game.id)
     else
