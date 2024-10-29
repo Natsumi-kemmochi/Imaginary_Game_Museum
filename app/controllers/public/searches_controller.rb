@@ -1,6 +1,7 @@
 class Public::SearchesController < ApplicationController
 
 	def search
+	   @tags = Tag.all
 	   @range = params[:range]
 	   @word = params[:word]
        if @range == "Game"

@@ -21,9 +21,11 @@ class Public::GamesController < ApplicationController
     @game = Game.find(params[:id])
     @details = @game.details.page(params[:page]).order(created_at: :desc)
     @game_comment = GameComment.new
+    @tags = Tag.all
   end
 
   def index
+    @tags = Tag.all
     if params[:latest]
        @games = Game.page(params[:page]).order(created_at: :desc)
     elsif params[:old]
