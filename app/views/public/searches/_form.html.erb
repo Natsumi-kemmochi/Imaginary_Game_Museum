@@ -20,6 +20,13 @@
       |<%= link_to '詳細の多い順', games_path(detail_count: "true"), class: 'text-light' %>
       |<%= link_to 'コメントの多い順', games_path(comment_count: "true"), class: 'text-light' %>
     </div>
+
+   <div>
+     <% @all_game.tags.each do |tag| %>
+       <%= link_to tag.name, search_path(word: tag.name, range: "Tag", search: 'perfect_match'), class: "badge badge-secondary" %>
+     <% end %>
+   </div>
+
     
   </div>
  </div>
