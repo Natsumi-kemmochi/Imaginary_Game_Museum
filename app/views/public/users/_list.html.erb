@@ -1,10 +1,11 @@
 <% users.each do |user| %>
   <div class="row mt-3 p-2 bg-light">
-    <div class="col-lg-5 col-md-6">
+    <div class="col-lg-2 col-md-3">
       <%# メイン画像 %>
-      <div class="border m-2 p-2 d-flex" style="width:110px;height:110px">
+      <div class="m-2 p-2 d-flex align-items-center justify-content-center">
         <%= link_to user_path(user.id) do %>
-          <%= image_tag user.get_profile_image(100,100), class: "align-items-center justify-content-center", style: "width: 100px; height: 100px;" %>
+          <%= image_tag user.get_profile_image(100,100) %>
+          <%# image_tag user.get_profile_image(100,100), class: "align-items-center justify-content-center", style: "width: 100px; height: 100px;" %>
         <% end %>
       </div>
     </div>
@@ -18,9 +19,12 @@
          <% end %>
        <% end %>
       </h6>
-      <%# ここに投稿ゲームの画像を表示 %>
-      <h6 class="mt-1 lh-lg"><span><%# test_method(game.main_text) %></span></h6>
     </div>
+      <%# ここに投稿ゲームの画像を表示 %>
+      
+      
+      <h6 class="mt-1 lh-lg"><span><%# test_method(game.main_text) %></span></h6>
+    
   </div>
 <% end %>
 <div class="row justify-content-center mt-3 pb-3">
