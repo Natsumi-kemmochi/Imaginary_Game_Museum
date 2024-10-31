@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :details, only: [:destroy]
     get 'comment_dashboards', to: 'comment_dashboards#index'
     resources :comments, only: [:destroy]
+    get "tags" => "tags#index"
+    get "destroy_tags" => "tags#destroy"
   end
   
   
@@ -38,8 +40,9 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
     end
     
+    get "tags" => "tags#index"
     get "search" => "searches#search"
-    get 'tagsearches/search'  => 'tagsearches#search'
+    #get 'tagsearches/search'  => 'tagsearches#search'
     
     
   end
