@@ -5,7 +5,7 @@
       <% @tags.each do |tag| %>
         <span class="badge border">
           <% tag.name %>
-          <%= link_to tag.name, admin_tags_path(tag), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
+          <%= link_to tag.name, admin_tag_path(tag), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
         </span>
       <% end %>
    </h4>

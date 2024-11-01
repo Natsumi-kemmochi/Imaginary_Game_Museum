@@ -13,8 +13,7 @@ Rails.application.routes.draw do
     resources :details, only: [:destroy]
     get 'comment_dashboards', to: 'comment_dashboards#index'
     resources :comments, only: [:destroy]
-    get "tags" => "tags#index"
-    get "destroy_tags" => "tags#destroy"
+    resources :tags, only: [:index, :destroy]
   end
   
   
