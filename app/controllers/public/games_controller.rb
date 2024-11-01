@@ -21,7 +21,8 @@ class Public::GamesController < ApplicationController
     @game = Game.find(params[:id])
     @details = @game.details.page(params[:page]).order(created_at: :desc)
     @game_comment = GameComment.new
-    @tags = Tag.all
+    #@tags = Tag.all
+    @tags = Tag.joins(:games).group('tags.id').order('COUNT(games.id) DESC').limit(5)
   end
 
   def index
