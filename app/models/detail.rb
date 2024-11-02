@@ -6,7 +6,7 @@ class Detail < ApplicationRecord
   validates :caption, length: { maximum: 50 }, presence: true
   validates :sub_text, length: { maximum: 400 }
   
-  paginates_per 4
+  paginates_per 10
   
     def get_image(width, height)
       unless image.attached?

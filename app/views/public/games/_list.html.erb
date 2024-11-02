@@ -18,7 +18,7 @@
         <% end %>
         
       <div class="text-right">
-      <h6 class="mt-3 text-right">
+        <h6 class="mt-3 text-right">
         <span><%= link_to "コメント(#{game.game_comments.count})", game_game_comments_path(game.id) %></span>
         <%# ブックマーク %>
         <% if game.bookmarked_by?(current_user) %>
@@ -30,10 +30,11 @@
             ♡ <%= game.bookmarks.count %> 
           <% end %>
         <% end %>
+        </h6>
       </div>
       <%# ここまで %>     
       
-      </h6>
+    
       <h6 class="text-muted text-right"><span>最終更新　<%= game.updated_at&.strftime("%Y年%m月%d日%H時%M分") %></span></h6>
     </div>
   </div>
@@ -44,3 +45,56 @@
     <%= paginate games %>
   </div>
 </div>
+
+
+<% if false %>
+<div class="card-list-container py-5">
+  <% games.each do |game| %>
+  <div class="card w-80 mx-auto mt-4 shadow-lg">
+    <div class="row">
+      <div class="col-lg-3 col-md-2 p-5">
+        <%= link_to game_path(game.id) do %>
+          <%= image_tag game.image, class: "align-items-center justify-content-center", style: "width: 320px; height: 240px;" %>
+        <% end %>
+      </div>
+      <div class="col-lg-7 offset-lg-2 col-md-7 offset-md-2">
+      <div class="card-body">
+        <h4 class="mt-1"><strong><%= game.title %></strong></h4>
+        <h6 class="mt-2"><span><strong><%= game.caption %></strong></span></h6>
+        <h6 class="mt-1 lh-lg"><span><%= test_method(game.main_text) %></span></h6>
+         <% game.tags.each do |tag| %>
+            <%= link_to tag.name, search_path(word: tag.name, range: "Tag", search: 'perfect_match'), class: "badge badge-secondary" %>
+         <% end %>
+         
+        <div class="text-right pr-3">
+          <h6 class="mt-3 text-right">
+            <span><%= link_to "コメント(#{game.game_comments.count})", game_game_comments_path(game.id) %></span>
+            <%# ブックマーク %>
+            <% if game.bookmarked_by?(current_user) %>
+              <%= link_to game_bookmark_path(game), method: :delete do %>
+                ♥ <%= game.bookmarks.count %> 
+              <% end %>
+              <% else %>
+              <%= link_to game_bookmark_path(game), method: :post do %>
+               ♡ <%= game.bookmarks.count %> 
+              <% end %>
+            <% end %>
+           </h6>
+        </div>
+        
+        <h6 class="text-muted text-right"><span>最終更新　<%= game.updated_at&.strftime("%Y年%m月%d日%H時%M分") %></span></h6>
+        
+      </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="row justify-content-center mt-3 pb-3">
+  <div class="Page navigation">
+    <%= paginate games %>
+  </div>
+</div>
+<% end %>
+
