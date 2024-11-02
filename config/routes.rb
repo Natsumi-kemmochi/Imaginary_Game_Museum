@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       resource :bookmark, only: [:create, :destroy]
     end
     
-    resources :game_comment do
+    resources :game_comment, only: [] do
       resource :favorite, only: [:create, :destroy]
     end
     
