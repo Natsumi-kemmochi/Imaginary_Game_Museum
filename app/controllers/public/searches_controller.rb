@@ -1,7 +1,7 @@
 class Public::SearchesController < ApplicationController
 
 	def search
-	   @tags = Tag.all
+	   @tags = Tag.game_count.limit(10)
 	   @range = params[:range]
 	   @word = params[:word]
        if @range == "Game"

@@ -16,6 +16,7 @@ class Public::GameCommentsController < ApplicationController
     @game = Game.find(params[:game_id])
     @game_comment = GameComment.new
     @game_comments = @game.game_comments.newest_first.page(params[:page])
+    @tags = Tag.game_count.limit(10)
   end
   
   def destroy

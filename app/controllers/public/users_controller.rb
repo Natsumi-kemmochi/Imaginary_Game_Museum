@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])  
     @games = @user.games.page(params[:page]).order(created_at: :desc)
     @followees_games = Game.where(user_id: [*current_user.following_ids]).order(created_at: :desc).limit(3)
-    @tags = Tag.all
+    @tags = Tag.game_count.limit(10)
   end
 
   def edit

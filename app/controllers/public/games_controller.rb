@@ -21,12 +21,11 @@ class Public::GamesController < ApplicationController
     @game = Game.find(params[:id])
     @details = @game.details.page(params[:page]).order(created_at: :desc)
     @game_comment = GameComment.new
-    #@tags = Tag.all
-    @tags = Tag.joins(:games).group('tags.id').order('COUNT(games.id) DESC').limit(5)
+    @tags = Tag.game_count.limit(10)
   end
 
   def index
-    @tags = Tag.all
+    @tags = Tag.game_count.limit(10)
     if params[:latest]
        @games = Game.page(params[:page]).order(created_at: :desc)
     elsif params[:old]

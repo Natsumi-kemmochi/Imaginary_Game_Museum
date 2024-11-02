@@ -1,7 +1,10 @@
-<div class="container bg-light ">
+<div class="container">
+   <%= render 'public/searches/form' %>
   <% if notice %>
     <p class="notice"><%= notice %></p>
   <% end %>
+  
+  <div class="bg-light">
   <div class="row p-2 justify-content-center">
     <%= image_tag @detail.image, class: "border m-2 p-2 img-fluid" %>
   </div>
@@ -26,6 +29,7 @@
     <%= link_to "戻る", game_path(@game) %>
   </div>  
 
+  </div>
     
   
 </div>

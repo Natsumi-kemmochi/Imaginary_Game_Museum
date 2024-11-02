@@ -23,6 +23,7 @@ class Public::DetailsController < ApplicationController
   def show
     @game = Game.find(params[:game_id])
     @detail = Detail.find(params[:id])
+    @tags = Tag.game_count.limit(10)
   end
 
   def edit

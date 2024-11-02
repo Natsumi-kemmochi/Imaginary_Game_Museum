@@ -23,4 +23,6 @@ class Tag < ApplicationRecord
     
   end
 
+  scope :game_count, -> { left_joins(:games).group(:id).order('COUNT(games.id) DESC') }
+
 end
