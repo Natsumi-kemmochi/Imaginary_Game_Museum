@@ -4,7 +4,9 @@ class Public::GameCommentsController < ApplicationController
     @game = Game.find(params[:game_id])
     @game_comment = current_user.game_comments.new(game_comment_params)
     @game_comment.game_id = @game.id
+    @tags = Tag.game_count.limit(10)
     if @game_comment.save
+      
       redirect_to game_game_comments_path(@game.id)
     else
       @details = @game.details.page(params[:page])

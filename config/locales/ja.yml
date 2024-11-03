@@ -9,6 +9,19 @@ ja:
         password_confirmation: "パスワード確認"
         email: "メールアドレス"
         introduction: "自己紹介"
+        image: "ユーザー画像"
+      game:
+        title: "タイトル"
+        caption: "見出し"
+        main_text: "自由記述欄"
+        name: "タグ"
+        image: "メインビジュアル"
+      detail:
+        caption: "見出し"
+        sub_text: "自由記述欄"
+        image: "ビジュアル"
+      tag:
+        name: "タグ"
     errors:
       messages:
         invalid: "が正しくありません。"
@@ -24,7 +37,7 @@ ja:
       not_found: "not found"
       not_locked: "was not locked"
       not_saved: "%{count} 件のエラーが発生しました。 %{resource} が保存できません"
-      taken: "はすでに存在しています"
+      taken: "はすでに登録されています"
       confirmation: "パスワードが一致していません。"
   #errors:
     #messages:
