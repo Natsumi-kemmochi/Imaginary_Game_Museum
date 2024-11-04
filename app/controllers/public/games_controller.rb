@@ -48,7 +48,7 @@ class Public::GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     if  @game.update(game_params)
-      flash[:notice] = "You have updated game successfully."
+      flash[:notice] = "変更が保存されました。"
       redirect_to  game_path(@game.id)
     else
       render :edit
