@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5 ">
+      <% if notice %>
+        <p class="notice text-light"><%= notice %></p>
+      <% end %>
       <h5 class="text-dark bg-light p-4 mb-0">新規登録</h5>
        <div class="form-body p-4 bg-light">
        　<!-- エラーメッセージ -->

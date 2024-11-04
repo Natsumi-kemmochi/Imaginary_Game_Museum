@@ -17,7 +17,7 @@ class User < ApplicationRecord
   def get_profile_image(width, height)
    unless image.attached?
      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-     image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
+     image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpg')
    end
    image.variant(resize_to_limit: [width, height]).processed
   end
@@ -34,7 +34,7 @@ class User < ApplicationRecord
 
   
   validates :name, length: { maximum: 15 }, presence: true
-  validates :password, presence: true, length: { minimum: 6 }
+  #validates :password, presence: true, length: { minimum: 6 }
   validates :email, uniqueness: true
   validates :introduction, length: { maximum: 200 }
   validates :image,  content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、JPG/JPEG/PNG/GIFのみアップロード可能です。' }
