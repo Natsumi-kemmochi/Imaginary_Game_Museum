@@ -78,22 +78,31 @@
       <%= f.submit "送信する" %>
     </div>
     <% end %>
+    
+    
   
   <% if @details.any? %>
-  <p class="text-center mt-5"><strong>もっと見る</strong></p>
-    <div class="row mt-3 p-2 justify-content-center d-flex">
+    <p class="text-center mt-5"><strong>もっと見る</strong></p>
+      <div class="card-deck justify-content-center m-0" style="display: flex; flex-wrap: wrap; align-content: flex-start;">
       <% @details.each do |detail| %>
-        <div class="border m-2 p-2 d-flex" style="width:210px;height:210px">
+      
+        <div class="card shadow-sm m-2 p-2" style="flex: 0 1 200px;">
           <%= link_to game_detail_path(detail.game_id, detail.id) do %>
-            <%= image_tag detail.get_image(200,200), class: "align-items-center justify-content-center" %>
-           <% end %>
-        </div>
-        <%# detail.caption %>
-       <% end %>
-       <% else %>
-      <%# 詳細が投稿されていない場合何も表示しない　%>
-   <% end %>
-  </div>
+            <%= image_tag detail.get_image(200,200), class: "card-img-top", alt: "...",style: "height:200px; object-fit:cover;" %>
+          <% end %>
+          <div class="card-body">
+            <h6 class="card-title"><%= detail.caption %></h6>
+          </div> 
+        </div> 
+       
+        <% end %>
+      </div>
+      <% else %>
+        <%# 詳細が投稿されていない場合何も表示しない　%>
+       
+  <% end %>
+  
+  
   <div class="row mt-3 p-2 justify-content-center">
     <%= paginate @details %>
   </div>
