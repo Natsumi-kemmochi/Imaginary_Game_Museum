@@ -3,15 +3,31 @@
   <div class="search_form">
     <%= form_with url: search_path, method: :get, local: true do |f| %>
       <%= f.text_field :word %>
-      <%= f.select :range, options_for_select({ "タイトル" => "Game", "ユーザー" => "User" }) %>
+      <%= f.select :range, options_for_select({ "タイトル" => "Game", "ユーザー" => "User", "タグ" => "Tag" }) %>
       <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
       <%= f.submit '検索' %>
     <% end %>
     
-    <%= form_with url: tagsearches_search_path,method: :get, local: true do |f| %>
-      <%= f.text_field :content %>
-      <%= f.submit'タグ検索' %>
-    <% end %>
+    <%#= form_with url: tagsearches_search_path,method: :get, local: true do |f| %>
+      <%#= f.text_field :content %>
+      <%#= f.submit'タグ検索' %>
+    <%# end %>
+    
+    <div>
+      <%= link_to '新しい順', games_path(latest: "true"), class: 'text-light' %>
+      |<%= link_to '古い順', games_path(old: "true"), class: 'text-light' %>
+      |<%= link_to 'ブックマークの多い順', games_path(bookmark_count: "true"), class: 'text-light' %>
+      |<%= link_to '詳細の多い順', games_path(detail_count: "true"), class: 'text-light' %>
+      |<%= link_to 'コメントの多い順', games_path(comment_count: "true"), class: 'text-light' %>
+    </div>
+
+   <div>
+     <% @tags.each do |tag| %>
+       <%= link_to tag.name, search_path(word: tag.name, range: "Tag", search: 'perfect_match'), class: "badge badge-light" %>
+     <% end %>
+   </div>
+
+    
   </div>
  </div>
 <% end %>

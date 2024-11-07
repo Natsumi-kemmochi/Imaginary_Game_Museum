@@ -1,4 +1,5 @@
 <div class="container">
+   <%= render 'public/searches/form' %>
   <div class="p-3 justify-content-center d-flex">
     <%= image_tag(@game.image, class: "img-fluid pr-3 pl-3") %>
   </div>
@@ -45,7 +46,7 @@
       <% end %>
   
   <div class="row justify-content-center mt-5 pb-5">
-    <%= link_to "ゲームページへ", game_path(@game) %>
+    <%= link_to "ゲームページへ", game_path(@game), class: 'text-light' %>
   </div>  
     
   <div class="row mt-3 p-2 justify-content-center">

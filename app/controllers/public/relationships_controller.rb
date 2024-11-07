@@ -17,11 +17,13 @@ class Public::RelationshipsController < ApplicationController
   def followings
     user = User.find(params[:user_id])
   	@users = user.followings.joins(:passive_relationships).order('relationships.created_at DESC').distinct.page(params[:page])
+  	@tags = Tag.game_count.limit(10)
   end
 
   def followers
     user = User.find(params[:user_id])
   	@users = user.followers.joins(:active_relationships).order('relationships.created_at DESC').distinct.page(params[:page])
+  	@tags = Tag.game_count.limit(10)
   end
 
   # ストロングパラメータ

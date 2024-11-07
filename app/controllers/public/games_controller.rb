@@ -21,10 +21,24 @@ class Public::GamesController < ApplicationController
     @game = Game.find(params[:id])
     @details = @game.details.page(params[:page]).order(created_at: :desc)
     @game_comment = GameComment.new
+    @tags = Tag.game_count.limit(10)
   end
 
   def index
-    @games = Game.page(params[:page]).order(created_at: :desc)
+    @tags = Tag.game_count.limit(10)
+    if params[:latest]
+       @games = Game.page(params[:page]).order(created_at: :desc)
+    elsif params[:old]
+       @games = Game.old.page(params[:page])
+    elsif params[:bookmark_count]
+       @games = Game.bookmark_count.page(params[:page])
+    elsif params[:detail_count]
+       @games = Game.detail_count.page(params[:page])
+    elsif params[:comment_count]
+       @games = Game.comment_count.page(params[:page])
+    else
+       @games = Game.page(params[:page]).order(created_at: :desc)
+    end
   end
 
   def edit
@@ -34,8 +48,8 @@ class Public::GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     if  @game.update(game_params)
-        flash[:notice] = "You have updated game successfully."
-        redirect_to  game_path(@game.id)
+      flash[:notice] = "変更が保存されました。"
+      redirect_to  game_path(@game.id)
     else
       render :edit
     end
@@ -52,8 +66,13 @@ class Public::GamesController < ApplicationController
   private
    
   def game_params
-    params.require(:game).permit(:title, :caption, :main_text, :image, :tag)
+    params.require(:game).permit(:title, :caption, :main_text, :image, :name)
   end
+
+  def tag_params
+    params.require(:game).permit(:name)[:name].split(',')
+  end
+ 
    
   def is_matching_login_user
     game =  Game.find(params[:id])
@@ -62,5 +81,4 @@ class Public::GamesController < ApplicationController
     end
   end
 
-  
 end

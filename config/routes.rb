@@ -8,11 +8,12 @@ Rails.application.routes.draw do
     get 'dashboards', to: 'dashboards#index'
     resources :users, only: [:show, :edit, :update, :destroy]
     get 'game_dashboards', to: 'game_dashboards#index'
-    resources :games, only: [:destroy]
+    resources :games, only: [:edit, :update, :destroy]
     get 'detail_dashboards', to: 'detail_dashboards#index'
     resources :details, only: [:destroy]
     get 'comment_dashboards', to: 'comment_dashboards#index'
     resources :comments, only: [:destroy]
+    resources :tags, only: [:index, :destroy]
   end
   
   
@@ -34,12 +35,13 @@ Rails.application.routes.draw do
       resource :bookmark, only: [:create, :destroy]
     end
     
-    resources :game_comment do
+    resources :game_comment, only: [] do
       resource :favorite, only: [:create, :destroy]
     end
     
+    get "tags" => "tags#index"
     get "search" => "searches#search"
-    get 'tagsearches/search'  => 'tagsearches#search'
+    #get 'tagsearches/search'  => 'tagsearches#search'
     
     
   end

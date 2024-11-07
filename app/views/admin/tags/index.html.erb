@@ -1,0 +1,12 @@
+<div class="container pb-5">
+  <%= render 'admin/shared/dashboards' %>
+    <p class="pt-3">タグ</p>
+    <h4>
+      <% @tags.each do |tag| %>
+        <span class="badge border">
+          <% tag.name %>
+          <%= link_to tag.name, admin_tag_path(tag), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
+        </span>
+      <% end %>
+   </h4>
+</div>

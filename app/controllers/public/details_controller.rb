@@ -23,6 +23,7 @@ class Public::DetailsController < ApplicationController
   def show
     @game = Game.find(params[:game_id])
     @detail = Detail.find(params[:id])
+    @tags = Tag.game_count.limit(10)
   end
 
   def edit
@@ -34,7 +35,7 @@ class Public::DetailsController < ApplicationController
     @game = Game.find(params[:game_id])
     @detail = Detail.find(params[:id])
     if  @detail.update(detail_params)
-        flash[:notice] = "You have updated detail successfully."
+        flash[:notice] = "変更が保存されました。"
         redirect_to  game_detail_path(@detail.game_id, @detail.id)
     else
       render :edit

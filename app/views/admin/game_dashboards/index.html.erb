@@ -18,13 +18,19 @@
       <tbody>
         <tr>
           <td style="width:5%;"><%= game.id %></td>
-          <td style="width:15%;">  
-            <%= image_tag game.image, class: "align-items-center justify-content-center", style: "width: 140px; height: 100px;" %>
+          <td style="width:15%;">
+            <%= link_to edit_admin_game_path(game.id) do %>
+              <%= image_tag game.image, class: "align-items-center justify-content-center", style: "width: 140px; height: 100px;" %>
+            <% end %>
           </td>
           <td style="width:15%;"><%= game.title %></td>
           <td style="width:15%;"><%= game.user.name %></td>
           <td style="width:40%;">
             <p><%= game.caption %></p>---<%= game.main_text %>
+            <p><% game.tags.each do |tag| %>
+                 <span class="badge badge-secondary"><%= tag.name %></span>
+               <% end %>
+            </p>
           </td>
           <td style="width:10%;">
             <%= link_to '削除', admin_game_path(game), method: :delete, data: { confirm: '本当に削除しますか？' } %> 
