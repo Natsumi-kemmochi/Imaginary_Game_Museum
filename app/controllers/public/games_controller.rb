@@ -66,12 +66,12 @@ class Public::GamesController < ApplicationController
   private
    
   def game_params
-    params.require(:game).permit(:title, :caption, :main_text, :image, :name)
+    params.require(:game).permit(:title, :caption, :main_text, :image, :tag_name)
   end
 
-  def tag_params
-    params.require(:game).permit(:name)[:name].split(',')
-  end
+  #def tag_params
+    #params.require(:game).permit(:name)[:name].split(',')
+  #end
  
    
   def is_matching_login_user

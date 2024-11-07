@@ -14,7 +14,7 @@ ja:
         title: "タイトル"
         caption: "見出し"
         main_text: "自由記述欄"
-        name: "タグ"
+        tag_name: "タグ"
         image: "メインビジュアル"
       detail:
         caption: "見出し"
@@ -29,6 +29,7 @@ ja:
         too_short: "は%{count}文字以上で入力してください。"
         too_long: "は%{count}文字以下で入力してください。"
         wrong_password_confirmation: "パスワードが一致していません。"
+        record_invalid: "は無効です。"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

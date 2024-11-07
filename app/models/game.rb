@@ -1,5 +1,6 @@
 class Game < ApplicationRecord
-  attr_accessor :name
+  
+  attr_accessor :tag_name
   
   after_find :tags_insert_name #コールバック
   after_save :update_game_tags
@@ -22,7 +23,7 @@ class Game < ApplicationRecord
   validates :caption, length: { maximum: 50 }, presence: true
   validates :main_text, length: { maximum: 400 }
   validates :image,  attached: true, content_type: { in: ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'], message: 'は、JPG/JPEG/PNG/GIFのみアップロード可能です。' }
-  validates :name, length: { maximum: 40 }, presence: true
+  validates :tag_name, length: { maximum: 40 }
 
   #scope :newest_first, -> { order(created_at: :desc) }
 
@@ -48,13 +49,13 @@ class Game < ApplicationRecord
   
   def tags_insert_name
     tags = self.tags.pluck(:name)
-    self.name = tags.join(", ")
+    self.tag_name = tags.join(", ")
     self
   end
   
   def update_game_tags
-    if self.name.present?
-      posted_tag_names = self.name.gsub(/[[:space:]]/, "").split(",").uniq 
+    if self.tag_name.present?
+      posted_tag_names = self.tag_name.gsub(/[[:space:]]/, "").split(",").uniq 
       current_tag_names = self.tags.pluck(:name)
       old_tag_names = current_tag_names - posted_tag_names
       new_tag_names = posted_tag_names - current_tag_names

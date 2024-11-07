@@ -44,7 +44,7 @@ Fuumin = User.find_or_create_by!(email: "sleeper@example.com") do |user|
 end
 
 
-
+puts "Userの実行を完了"
 
 
 # -------ゲーム記事--------------
@@ -104,6 +104,8 @@ Game.find_or_create_by!(id: "7") do |game|
 end
 
 
+puts "Gameの実行を完了"
+
 # ---------詳細記事-------------
 
 Detail.find_or_create_by!(id: "1") do |detail|
@@ -138,7 +140,7 @@ Detail.find_or_create_by!(id: "5") do |detail|
 end
 
 
-
+puts "Detailの実行を完了"
 
 
 # -------コメント---------------
@@ -209,6 +211,8 @@ GameComment.find_or_create_by!(id: "11") do |game_comment|
   game_comment.game_id = "1"
 end
 
+puts "Commentの実行を完了"
+
 # -------ブックマーク---------------
 Bookmark.find_or_create_by!(id: "1") do |bookmark|
   bookmark.user_id = "1"
@@ -219,11 +223,15 @@ Bookmark.find_or_create_by!(id: "2") do |bookmark|
   bookmark.game_id = "3"
 end
 
+puts "Bookmarkの実行を完了"
+
 # -------いいね---------------
 Favorite.find_or_create_by!(id: "1") do |favorite|
   favorite.user_id = "1"
   favorite.game_comment_id = "1"
 end
+
+puts "Favoriteの実行を完了"
 
 # -------フォロー---------------
 Relationship.find_or_create_by!(id: "2") do |relationship|
@@ -235,6 +243,8 @@ Relationship.find_or_create_by!(id: "3") do |relationship|
   relationship.follower_id = "1"
   relationship.followed_id = "3"
 end
+
+puts "Relationshipの実行を完了"
 
 # -------タグ---------------
 Tag.find_or_create_by!(id: "1") do |tag|
@@ -270,7 +280,7 @@ Tag.find_or_create_by!(id: "8") do |tag|
   tag.name = "ホラー"
 end
 
-
+puts "Tagの実行を完了"
 
 # -------タグ中間テーブル---------------
 
@@ -358,6 +368,6 @@ GameTag.find_or_create_by!(id: "17") do |tag|
   tag.tag_id = "3"
 end
 
-
+puts "Game-Tagの実行を完了"
 
 puts "seedの実行が完了しました"
