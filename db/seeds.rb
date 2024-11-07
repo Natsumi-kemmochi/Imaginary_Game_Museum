@@ -358,8 +358,6 @@ GameTag.find_or_create_by!(id: "17") do |tag|
   tag.tag_id = "3"
 end
 
-# -------管理者---------------
-Admin.create(email: 'admin@example.com', 
-             password: '123456')
+
 
 puts "seedの実行が完了しました"
