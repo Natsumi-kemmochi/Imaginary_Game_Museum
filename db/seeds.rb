@@ -368,6 +368,6 @@ GameTag.find_or_create_by!(id: "17") do |tag|
   tag.tag_id = "3"
 end
 
-puts "Game-Tagの実行を完了"
+puts "Game_Tagの実行を完了"
 
 puts "seedの実行が完了しました"
