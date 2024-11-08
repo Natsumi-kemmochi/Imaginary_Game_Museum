@@ -60,7 +60,7 @@ ja:
       invalid: "%{authentication_keys}またはパスワードが正しくありません。"
       locked: "Your account is locked."
       last_attempt: "You have one more attempt before your account is locked."
-      not_found_in_database: "%{authentication_keys}またはパスワードが正しくありません。."
+      not_found_in_database: "%{authentication_keys}またはパスワードが正しくありません。"
       timeout: "Your session expired. Please sign in again to continue."
       unauthenticated: "ログインしてください。"
       unconfirmed: "You have to confirm your email address before continuing."
