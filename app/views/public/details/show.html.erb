@@ -15,7 +15,8 @@
     </div>
   </div>
   
-  <div class="row justify-content-center mt-5">  
+  <div class="row justify-content-center mt-5">
+    <%# ここで@game.user_idを手動で変えると問題が発生 %>  
     <%if @game.user_id == current_user.id %>
       <div>
         <%= link_to edit_game_detail_path(@detail.game_id, @detail.id), class: 'btn btn-light btn-outline-dark' do %>

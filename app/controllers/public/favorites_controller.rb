@@ -11,6 +11,6 @@ class Public::FavoritesController < ApplicationController
      game_comment = GameComment.find(params[:game_comment_id])
      favorite = current_user.favorites.find_by(game_comment_id: game_comment.id)
      favorite.destroy
-     redirect_to request.refererS
+     redirect_to request.referer
   end
 end
