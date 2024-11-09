@@ -21,8 +21,8 @@ class Public::DetailsController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:game_id])
     @detail = Detail.find(params[:id])
+    @game = @detail.game
     @tags = Tag.game_count.limit(10)
   end
 
@@ -59,7 +59,8 @@ class Public::DetailsController < ApplicationController
    end
    
    def is_matching_login_user
-    game =  Game.find(params[:game_id])
+    detail = Detail.find(params[:id])
+    game = detail.game
     unless game.user_id == current_user.id
       redirect_to user_path(current_user.id)
     end
