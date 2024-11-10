@@ -370,7 +370,7 @@ end
 
 puts "Game_Tagの実行を完了"
 
-#seed -------管理者---------------
+#seed -------管理者機能---------------
 Admin.all.destroy_all
 puts "管理者の削除を完了"
 
