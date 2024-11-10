@@ -368,12 +368,17 @@ GameTag.find_or_create_by!(id: "17") do |tag|
   tag.tag_id = "3"
 end
 
+puts "Game_Tagの実行を完了"
+
 #seed -------管理者---------------
+Admin.all.destroy_all
+puts "管理者の削除を完了"
+
 Admin.create(email: ENV['ADMIN_EMAIL'], 
              password: ENV['ADMIN_PASSWORD'])
+puts "管理者の作成を完了"
 
 
 
-puts "Game_Tagの実行を完了"
 
 puts "seedの実行が完了しました"
