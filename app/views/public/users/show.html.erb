@@ -14,19 +14,17 @@
        <h5><strong><%= @user.name %></strong></h5>
        <h6><%= @user.introduction %></h6>
        
-       <%# ログインユーザーのとき %>
-       <% if @user == current_user %>
+       <% if @user == current_user && @user.email != "guest@example.com" %>
        <div class="edit_user mt-2">
          <%= link_to edit_user_path(@user), class: "btn btn-light btn-outline-dark", data: {"turbolinks" => false} do %>
           ユーザー情報変更</i>
          <% end %>
        </div>
        <% end %>
-       <%# ここまで %>
        
        
        <%# ログインユーザーのとき %>
-       <% if @user == current_user %>
+       <% if @user == current_user && @user.email != "guest@example.com" %>
        <div class="icon mt-3">
          <a href="<%= user_bookmarks_path(current_user.id) %>">
            <i class="fa-solid fa-book text-dark">ブックマーク</i>
@@ -44,7 +42,7 @@
        </div>
        <% end %>
        <%# ここまで %>
-       <% if current_user != @user %>
+       <% if current_user != @user && current_user.email != "guest@example.com" %>
          <% if current_user.following?(@user) %>
            <%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete, class: "btn btn-info" %>
          <% else %>
@@ -55,14 +53,28 @@
   </div>
   <br><br>
 
-  <p class="text-light">このユーザーの投稿一覧</p>
-  <%= render 'public/games/list', games: @games %>
-  
-  <% if @user == current_user %>
-  <p class="text-light">フォローユーザーの投稿一覧</p>
-    <%= render 'public/relationships/list', followees_games: @followees_games %>
+  <% unless @user.guest_user? %>
+    <p class="text-light">このユーザーの投稿一覧</p>
+    <%= render 'public/games/list', games: @games %>
+    
+    <% if @user == current_user %>
+      <p class="text-light">フォローユーザーの投稿一覧</p>
+      <%= render 'public/relationships/list', followees_games: @followees_games %>
+    <% end %>
+    <% else %>
+    <% if current_user == @user %>
+      <h5 class="text-light">ユーザー登録すると、<br><br>
+      ・ユーザー情報の編集<br>
+      ・新規投稿<br>
+      ・ユーザーのフォロー<br>
+      ・投稿のブックマーク<br>
+      ・コメントに対する「いいね！」<br><br>
+      などの機能が使えるようになります。<br><br>
+      ログアウト後に「新規登録」ボタンから登録してください。<br><br><br>
+      </h3>
+    <% end %>
+    
   <% end %>
-  
   
 </div>
 

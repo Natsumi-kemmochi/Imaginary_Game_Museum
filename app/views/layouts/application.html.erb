@@ -29,15 +29,19 @@
                  <li class="nav-item">
                    <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-light' %>
                  </li>
+                 <% if current_user.email != "guest@example.com" %>
                  <li class="nav-item">
                    <%= link_to "投稿する", new_game_path, class: 'nav-link text-light' %>
                  </li>
+                 <% end %>
                  <li class="nav-item">
                    <%= link_to "ゲーム一覧", games_path, class: 'nav-link text-light' %>
                  </li>
+                 <% if current_user.email != "guest@example.com" %>
                  <li class="nav-item">
                    <%= link_to "ブックマーク", user_bookmarks_path(current_user.id), class: 'nav-link text-light' %>
                  </li>
+                 <% end %>
                  <li class="nav-item">
                    <%= link_to "タグ一覧", tags_path, class: 'nav-link text-light' %>
                  </li>

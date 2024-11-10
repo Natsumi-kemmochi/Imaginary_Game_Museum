@@ -1,6 +1,7 @@
 class Public::RelationshipsController < ApplicationController
 
   before_action :is_matching_login_user, only: [:followings, :followers]
+  before_action :ensure_guest_user, only: [:create, :destroy, :followings, :followers]
 
   def create
     user = User.find(params[:user_id])
@@ -33,6 +34,13 @@ class Public::RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     unless user.id == current_user.id
       redirect_to user_path(current_user.id)
+    end
+  end
+
+  def ensure_guest_user
+    @user = current_user
+    if @user.guest_user?
+      redirect_to root_path , notice: "この機能はユーザー登録後に使えます。"
     end
   end
 

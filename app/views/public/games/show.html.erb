@@ -19,7 +19,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8">
       <p class="text-right pr-3">投稿者：<%= link_to @game.user.name, @game.user %>
-        <% if current_user != @game.user %>
+        <% if current_user != @game.user && current_user.email != "guest@example.com" %>
          <% if current_user.following?(@game.user) %>
            <%= link_to "フォロー解除", user_relationships_path(@game.user.id), method: :delete, class: "btn btn-info" %>
          <% else %>
@@ -57,13 +57,15 @@
   <div class="row mb-3 justify-content-center">
     <%= link_to "コメント(#{@game.game_comments.count})", game_game_comments_path(@game.id) %>
       <%# ブックマーク %>
-      <% if @game.bookmarked_by?(current_user) %>
-        <%= link_to game_bookmark_path(@game), method: :delete do %>
-          ♥ <%= @game.bookmarks.count %> 
-      <% end %>
-      <% else %>
-        <%= link_to game_bookmark_path(@game), method: :post do %>
-          ♡ <%= @game.bookmarks.count %> 
+      <% if current_user.email != "guest@example.com" %>
+        <% if @game.bookmarked_by?(current_user) %>
+          <%= link_to game_bookmark_path(@game), method: :delete do %>
+            ♥ <%= @game.bookmarks.count %> 
+        <% end %>
+        <% else %>
+          <%= link_to game_bookmark_path(@game), method: :post do %>
+            ♡ <%= @game.bookmarks.count %> 
+          <% end %>
         <% end %>
       <% end %>
       <%# ここまで %>     

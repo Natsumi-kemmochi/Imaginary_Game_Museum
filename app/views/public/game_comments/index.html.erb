@@ -25,13 +25,15 @@
 
         <p class ="text-right mt-2 text-muted">
           <%# いいねボタン %> 
-          <% if game_comment.favorited_by?(current_user) %>
-            <%= link_to  game_comment_favorite_path( game_comment), method: :delete do %>
-              ♥<%=  game_comment.favorites.count %> いいね
-            <% end %>
-            <% else %>
-            <%= link_to  game_comment_favorite_path( game_comment), method: :post do %>
-              ♡<%=  game_comment.favorites.count %> いいね
+          <% if current_user.email != "guest@example.com" %>
+            <% if game_comment.favorited_by?(current_user) %>
+              <%= link_to  game_comment_favorite_path( game_comment), method: :delete do %>
+                ♥<%=  game_comment.favorites.count %> いいね
+              <% end %>
+              <% else %>
+              <%= link_to  game_comment_favorite_path( game_comment), method: :post do %>
+                ♡<%=  game_comment.favorites.count %> いいね
+              <% end %>
             <% end %>
           <% end %>
           <%# ここまで %>  

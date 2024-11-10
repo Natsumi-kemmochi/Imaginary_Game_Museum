@@ -1,6 +1,7 @@
 class Public::GamesController < ApplicationController
  
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+  before_action :ensure_guest_user, only: [:new, :create]
  
   def new
     @game = Game.new
@@ -64,7 +65,14 @@ class Public::GamesController < ApplicationController
   
   # ストロングパラメータ
   private
-   
+
+  def ensure_guest_user
+    @user = current_user
+    if @user.guest_user?
+      redirect_to root_path , notice: "この機能はユーザー登録後に使えます。"
+    end
+  end
+  
   def game_params
     params.require(:game).permit(:title, :caption, :main_text, :image, :tag_name)
   end
