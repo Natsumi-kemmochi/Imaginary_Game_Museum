@@ -6,5 +6,6 @@
     <% else %>
     <%= link_to game_bookmark_path(game), method: :post, remote: true, data: {"turbolinks" => false} do %>
       ♡ <%= game.bookmarks.count %> 
+    <% end %>
   <% end %>
 <% end %>
