@@ -6,7 +6,7 @@ class Public::BookmarksController < ApplicationController
     game = Game.find(params[:game_id])
     bookmark = current_user.bookmarks.new(game_id: game.id)
     bookmark.save
-    redirect_to request.referer
+    #redirect_to request.referer
   end
 
   def index
@@ -20,7 +20,7 @@ class Public::BookmarksController < ApplicationController
     game = Game.find(params[:game_id])
     bookmark = current_user.bookmarks.find_by(game_id: game.id)
     bookmark.destroy
-    redirect_to request.referer
+    #redirect_to request.referer
   end
 
 

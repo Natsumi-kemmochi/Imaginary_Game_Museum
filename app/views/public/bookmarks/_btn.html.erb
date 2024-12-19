@@ -1,0 +1,10 @@
+<% if current_user.email != "guest@example.com" %>
+  <% if game.bookmarked_by?(current_user) %>
+    <%= link_to game_bookmark_path(game), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+      ♥ <%= game.bookmarks.count %> 
+    <% end %>
+    <% else %>
+    <%= link_to game_bookmark_path(game), method: :post, remote: true, data: {"turbolinks" => false} do %>
+      ♡ <%= game.bookmarks.count %> 
+  <% end %>
+<% end %>
