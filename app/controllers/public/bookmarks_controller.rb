@@ -3,8 +3,8 @@ class Public::BookmarksController < ApplicationController
   before_action :ensure_guest_user, only: [:create, :index, :destroy]
 
   def create
-    game = Game.find(params[:game_id])
-    bookmark = current_user.bookmarks.new(game_id: game.id)
+    @game = Game.find(params[:game_id])
+    bookmark = current_user.bookmarks.new(game_id: @game.id)
     bookmark.save
     #redirect_to request.referer
   end
@@ -17,8 +17,8 @@ class Public::BookmarksController < ApplicationController
   end
 
   def destroy
-    game = Game.find(params[:game_id])
-    bookmark = current_user.bookmarks.find_by(game_id: game.id)
+    @game = Game.find(params[:game_id])
+    bookmark = current_user.bookmarks.find_by(game_id: @game.id)
     bookmark.destroy
     #redirect_to request.referer
   end

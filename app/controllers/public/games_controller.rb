@@ -40,6 +40,7 @@ class Public::GamesController < ApplicationController
     else
        @games = Game.page(params[:page]).order(created_at: :desc)
     end
+    #byebug
   end
 
   def edit

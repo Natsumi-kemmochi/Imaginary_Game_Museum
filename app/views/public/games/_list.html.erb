@@ -23,7 +23,7 @@
         </h6>
         <%# ブックマーク %>
           <h6 id ="bookmark_buttons_<%= game.id %>">
-            <%= render "public/bookmarks/btn", game:@game %>
+            <%= render "public/bookmarks/btn", game:game %>
           </h6>
 <% 
 =begin
@@ -49,7 +49,9 @@
       <h6 class="text-muted text-right"><span>最終更新　<%= game.updated_at&.strftime("%Y年%m月%d日%H時%M分") %></span></h6>
     </div>
   </div>
+  </div>
 <% end %>
+
 
 <div class="row justify-content-center mt-3 pb-3">
   <div class="Page navigation">
